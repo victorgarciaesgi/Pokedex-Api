@@ -1,0 +1,16 @@
+{
+  "name": "BrawlStar-Api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://victorgarciaesgi@github.com/victorgarciaesgi/BrawlStar-Api.git",
+  "author": "Victor Garcia <victorgarciaparis13@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --inspect index.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "lodash": "^4.17.5",
+    "mongoose": "^5.0.4"
+  }
+}
