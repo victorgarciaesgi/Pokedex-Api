@@ -8,10 +8,11 @@ var express = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Pokemondb');
+// start with > mongod
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 let routes = require('./api/routes/pokemonRoute'); //importing route
@@ -19,5 +20,4 @@ routes(app); //register the route
 
 app.listen(port);
 
-
-console.log('todo list RESTful API server started on: ' + port);
+console.log(`API server started on: ${port}`);
