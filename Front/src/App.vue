@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <HeaderComponent/>
-    <router-view/>
+    <div class='view'>
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -26,6 +28,20 @@ export default {
   color: #2c3e50;
 }
 
+.view {
+  position: absolute;
+  flex-flow: column nowrap;
+  left: 0;
+  top: 50px;
+  min-width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: calc(100% - 50px);
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -35,6 +51,19 @@ a {
   justify-content: inherit;
   align-items: inherit;
   align-content: inherit;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+input, textarea, button {
+  display: flex;
+  outline: none;
+  border: none;
+  background: none;
+  resize: none;
+  font-family: 'Open Sans', sans-serif;
 }
 
 span {
