@@ -12,6 +12,9 @@ let mongoose = require('mongoose');
 
 
 let pokemonSchema = mongoose.Schema({
+    idPokedex: {
+        type: Number
+    },
     name: {
         type: String
     },
