@@ -1,2 +1,2 @@
-# BrawlStar-Api
-An API to get info on the SuperCell game BrawlStar
+# Pokedex API
+An API like Pokedex.
