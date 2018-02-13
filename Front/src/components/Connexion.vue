@@ -40,6 +40,13 @@ export default {
       },
       submitting: false
     }
+  },
+  methods: {
+    async handleSubmit() {
+      this.submitting = true;
+      let response = await this.$store.dispatch('connexionRequest', this.LoginData);
+      this.submitting = false;
+    }
   }
 }
 
