@@ -1,5 +1,5 @@
 module.exports = function(app) {
-    let pokemon = require('../controllers/pokemonsControllers');
+    let pokemon = require('../controllers/pokemonController');
 
     app.route('/pokemons')
         .get(pokemon.list_all_pokemons)

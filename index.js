@@ -1,27 +1,23 @@
-const express = require('express'),
+var express = require('express'),
+    app = express(),
+    port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
-    port = process.env.PORT || 3000;
+    Pokemon = require('./api/models/pokemon'), //created model loading here
+    bodyParser = require('body-parser');
 
-//mongoose.connect('mongodb://localhost/pokedex');
-
-require('./models/Pokemon');
-require('./models/Type');
-
-// instancie server(new app) express
-const app = express();
-
-app.use('/', require('./routes/pokemons'));
-app.use('/types', require('./routes/types'));
+// mongoose instance connection url connection
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/Pokemondb');
 
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-// nouvelle route - qui execute une fonction
-// req : requete vers le serveur
-// res : response envoyé par le serveur
-app.get('/', function(req, res){
-    res.send("Pokedex - first page")
-});
 
-console.log('Pokedex run ? Yes, on port '+ port);
+let routes = require('./api/routes/pokemonRoute'); //importing route
+routes(app); //register the route
 
 app.listen(port);
+
+
+console.log('todo list RESTful API server started on: ' + port);
