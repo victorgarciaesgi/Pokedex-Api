@@ -22,13 +22,11 @@ const Rooter = new Router({
       path: '/connexion',
       name: 'Connexion',
       component: Views.Connexion,
-      meta: {contentProp: true}
     },
     {
       path: '/inscription',
       name: 'Inscription',
       component: Views.Inscription,
-      meta: {contentProp: true}
     }
   ]
 })
