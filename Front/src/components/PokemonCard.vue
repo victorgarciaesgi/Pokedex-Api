@@ -7,7 +7,7 @@
             <span>NIVEAU 1</span>
           </span>
           <span class='name'>{{pokemon.Name}}</span>
-          <span class='pv'>90<span>pv</span></span>
+          <span class='pv'>{{getPV}}<span>pv</span></span>
           <span class='type' :style="{backgroundPosition: getIcon}"></span>
         </div>
         <div class='img-container'>
@@ -88,6 +88,9 @@ export default {
     },
     getImage() {
       return `https://raw.githubusercontent.com/fanzeyi/Pokemon-DB/master/img/${this.pokemon.Number}${this.pokemon.Name}.png`
+    },
+    getPV() {
+      return Math.round(Number(this.pokemon.MaxHP) / 200) * 10;
     }
   },
   methods: {
@@ -179,7 +182,7 @@ export default {
         align-items: flex-end;
         align-self: flex-end;
         flex: 0 0 auto;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: bold;
       }
 
