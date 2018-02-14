@@ -63,6 +63,7 @@ export default {
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(10,10,10, 0.2);
   padding: 30px;
+  background-color: white;
 
   .footer {
     display: flex;

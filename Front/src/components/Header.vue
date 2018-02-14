@@ -3,7 +3,9 @@
   <header>
     <ul class='routes left'>
       <router-link to='/'>
-        <li>Accueil</li>
+        <li>
+          <img src="~../assets/pokeball.png" alt="">
+        </li>
       </router-link>
       <router-link to='/mypokemons' v-if='$store.state.userConnected'>
         <li>Mes pokémons</li>
@@ -49,8 +51,10 @@ header {
   top: 0px;
   left: 0px;
   width: 100%;
-  background-color: #e04b4b;
+  background-color: rgb(39, 39, 39);
+  box-shadow: 0 0 5px rgb(0,0,0);
   color: white;
+  z-index: 10000;
 
   .search {
     display: flex;
@@ -76,6 +80,11 @@ header {
       padding: 0 10px 0 10px;
       transition: background-color 0.3s;
 
+      img {
+        height: 35px;
+        width: 35px;
+      }
+
       &:hover {
         background-color: #b92d2d;
       }
@@ -85,7 +94,7 @@ header {
 
 .input-form {
   position: relative;
-  background-color: rgb(220,220,220);
+  background-color: rgb(240, 240, 240);
   color: rgb(70,70,70);
   height: 35px;
   padding: 5px 30px 5px 9px;
@@ -93,7 +102,7 @@ header {
   width: 100%;
   line-height: 35px;
   font-size: 13px;
-  border-radius: 3px;
+  border-radius: 5px;
 
   &:focus{
     background-color: rgb(225,225,225);
