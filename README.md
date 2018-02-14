@@ -1,2 +1,5 @@
 # Pokedex API
-An API like Pokedex.
+An API to get info on the Pokemons.
+
+
+

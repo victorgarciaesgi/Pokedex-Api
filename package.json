@@ -9,7 +9,9 @@
     "start": "nodemon --inspect index.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.5",
     "mongoose": "^5.0.4"
   }

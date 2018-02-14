@@ -1,7 +1,7 @@
 let mongoose = require('mongoose'),
     Pokemon = mongoose.model('Pokemon');
 
-// List of all pokemons
+/** list pokemons **/
 exports.list_all_pokemons = function(req, res) {
     Pokemon.find({}, function(err, pokemon) {
         if (err)
@@ -10,8 +10,8 @@ exports.list_all_pokemons = function(req, res) {
     });
 };
 
-// Create a pokemon
-exports.create_a_pokemon = function(req, res) {
+/** create pokemon **/
+exports.create_pokemon = function(req, res) {
     let new_pokemon = new Pokemon(req.body);
     new_pokemon.save(function(err, pokemon) {
         if (err)
@@ -20,8 +20,8 @@ exports.create_a_pokemon = function(req, res) {
     });
 };
 
-// Get information of one pokemon
-exports.read_a_pokemon = function(req, res) {
+/** display pokemon **/
+exports.read_pokemon = function(req, res) {
     Pokemon.findById(req.params.pokemonId, function(err, pokemon) {
         if (err)
             res.send(err);
@@ -29,8 +29,8 @@ exports.read_a_pokemon = function(req, res) {
     });
 };
 
-// Update a pokemon
-exports.update_a_pokemon = function(req, res) {
+/** update pokemon **/
+exports.update_pokemon = function(req, res) {
     Pokemon.findOneAndUpdate({_id: req.params.pokemonId}, req.body, {new: true}, function(err, pokemon) {
         if (err)
             res.send(err);
@@ -38,8 +38,8 @@ exports.update_a_pokemon = function(req, res) {
     });
 };
 
-// Delete a pokemon
-exports.delete_a_pokemon = function(req, res) {
+/** delete pokemon **/
+exports.delete_pokemon = function(req, res) {
     Pokemon.remove({
         _id: req.params.pokemonId
     }, function(err, pokemon) {
