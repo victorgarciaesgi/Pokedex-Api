@@ -1,9 +1,10 @@
 let mongoose = require('mongoose'),
-    Pokemon = mongoose.model('Pokemon');
+    Pokemon = mongoose.model('Pokemon'),
+    attributesSelect = 'Number Name Types Resistant Weaknesses FastAttack SpecialAttack MaxHP NextEvolution PreviousEvolution';
 
 /** list pokemons **/
 exports.list_all_pokemons = function(req, res) {
-    let query = Pokemon.find({}).select('Number Name Types Resistant Weaknesses FastAttack SpecialAttack');
+    let query = Pokemon.find({}).select(attributesSelect);
     query.exec(function (err, pokemons) {
         if (err)
             res.send(err)
@@ -23,16 +24,17 @@ exports.create_pokemon = function(req, res) {
 
 /** display pokemon **/
 exports.read_pokemon = function(req, res) {
-    Pokemon.findById(req.params.Number, function(err, pokemon) {
+    let query = Pokemon.find({Number: req.params.Number}).select(attributesSelect);
+    query.exec(function (err, pokemons) {
         if (err)
-            res.send(err);
-        res.json(pokemon);
-    });
+            res.send(err)
+        res.json(pokemons)
+    })
 };
 
 /** update pokemon **/
 exports.update_pokemon = function(req, res) {
-    Pokemon.findOneAndUpdate({_id: req.params.Number}, req.body, {new: true}, function(err, pokemon) {
+    Pokemon.findOneAndUpdate({Number: req.params.Number}, req.body, {new: true}, function(err, pokemon) {
         if (err)
             res.send(err);
         res.json(pokemon);
@@ -42,7 +44,7 @@ exports.update_pokemon = function(req, res) {
 /** delete pokemon **/
 exports.delete_pokemon = function(req, res) {
     Pokemon.remove({
-        _id: req.params.Number
+        Number: req.params.Number
     }, function(err, pokemon) {
         if (err)
             res.send(err);
