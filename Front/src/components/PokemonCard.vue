@@ -29,7 +29,7 @@
           </ul>
           <ul class='autre'>
             <li>
-              <span class='title'>Faiblesse</span>
+              <span class='title'>Faiblesses</span>
               <div class='list'>
                 <span class='type' v-for='weak in pokemon.Weaknesses.slice(0,3)' 
                 :key='weak'

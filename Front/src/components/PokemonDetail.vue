@@ -1,6 +1,6 @@
 <template>
 
-  <div class='overlay' @click='$router.go(-1)'>
+  <div class='overlay' @click="$router.push('/')">
     <div class='window' @click.stop>
       <PokemonCard v-if='$store.state.pokemonList.length > 0' :pokemon='getPokemon'></PokemonCard>
     </div>
