@@ -58,7 +58,4 @@ typings/
 .env
 
 # idea folder phpstorm
-.idea
-
-#
-.idea/*
+.idea/
