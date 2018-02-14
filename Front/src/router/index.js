@@ -11,12 +11,13 @@ const Rooter = new Router({
     {
       path: '/',
       name: 'Liste des pokémons',
-      component: Views.PokemonList
-    },
-    {
-      path: '/pokemonlist',
-      name: 'Information',
-      component: Views.PokemonDetail
+      component: Views.PokemonList,
+      children: [{
+        path: '/pokemon/:id',
+        name: '',
+        props: true,
+        component: Views.PokemonDetail
+      }]
     },
     {
       path: '/connexion',

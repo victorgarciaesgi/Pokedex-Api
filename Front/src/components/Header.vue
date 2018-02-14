@@ -4,7 +4,7 @@
     <ul class='routes left'>
       <router-link to='/'>
         <li>
-          <img src="~../assets/pokeball.png" alt="">
+          <img class='logo' :class='{animate: $store.state.fetching}' src="~../assets/pokeball.png" alt="">
         </li>
       </router-link>
       <router-link to='/mypokemons' v-if='$store.state.userConnected'>
@@ -78,7 +78,19 @@ header {
       display: flex;
       align-items: center;
       padding: 0 10px 0 10px;
-      transition: background-color 0.3s;
+      transition: color 0.3s;
+
+      .logo{
+        transition: transform 0.3s;
+
+        &.animate {
+          animation: rotation 0.5s infinite linear;
+        }
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
 
       img {
         height: 35px;
@@ -86,11 +98,13 @@ header {
       }
 
       &:hover {
-        background-color: #b92d2d;
+        color: #b92d2d;
       }
     }
   }
 }
+
+
 
 .input-form {
   position: relative;

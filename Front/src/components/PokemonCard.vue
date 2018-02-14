@@ -1,52 +1,57 @@
 <template>
-  <div class='pokemon'>
-    <div class='container' :style="{'background-image': `url(${getTexture})`}">
-      <div class='title'>
-        <span class='level'>
-          <span>NIVEAU 1</span>
-        </span>
-        <span class='name'>{{pokemon.Name}}</span>
-        <span class='pv'>90<span>pv</span></span>
-        <span class='type' :style="{backgroundPosition: getIcon}"></span>
+  <router-link :to='`/pokemon/${pokemon.Number}`'>
+    <div class='pokemon'>
+      <div class='container' :style="{'background-image': `url(${getTexture})`}">
+        <div class='title'>
+          <span class='level'>
+            <span>NIVEAU 1</span>
+          </span>
+          <span class='name'>{{pokemon.Name}}</span>
+          <span class='pv'>90<span>pv</span></span>
+          <span class='type' :style="{backgroundPosition: getIcon}"></span>
+        </div>
+        <div class='img-container'>
+          <div class='img' :style="{'background-image': `url(${getImage})`}"></div>
+          <div class='img-info'>n°378 Pokémon truc Taille: 2cm  Poids: 10kg</div>
+        </div>
+        <div class='infos'>
+          <ul class='attacks'>
+            <li class='first' v-if='pokemon.FastAttack.length > 0'>
+              <span class='type' :style="{backgroundPosition: getType(pokemon.FastAttack[0].Type)}"></span>
+              <span class='name'>{{pokemon.FastAttack[0].Name}}</span>
+              <span class='dmg'>{{pokemon.FastAttack[0].Damage}}</span>
+            </li>
+            <li class='second' v-if='pokemon.SpecialAttack.length > 0'>
+              <span class='type' :style="{backgroundPosition: getType(pokemon.SpecialAttack[0].Type)}"></span>
+              <span class='name'>{{pokemon.SpecialAttack[0].Name}}</span>
+              <span class='dmg'>{{pokemon.SpecialAttack[0].Damage}}</span>
+            </li>
+          </ul>
+          <ul class='autre'>
+            <li>
+              <span class='title'>Faiblesse</span>
+              <div class='list'>
+                <span class='type' v-for='weak in pokemon.Weaknesses.slice(0,3)' 
+                :key='weak'
+                :style="{backgroundPosition: getType(weak)}"></span>
+              </div>
+            </li>
+            <li>
+              <span class='title'>Résistances</span>
+              <div class='list'>
+                <span class='type' v-for='resist in pokemon.Resistant.slice(0,3)' 
+                :key='resist'
+                :style="{backgroundPosition: getType(resist)}"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class='img-container'>
-        <div class='img' :style="{'background-image': `url(${getImage})`}"></div>
-        <div class='img-info'>n°378 Pokémon truc Taille: 2cm  Poids: 10kg</div>
+      <div class='edit'>
+        <img src="~../assets/edit.svg" alt="">
       </div>
-      <div class='infos'>
-        <ul class='attacks'>
-          <li class='first' v-if='pokemon.FastAttack.length'>
-            <span class='type' :style="{backgroundPosition: getType(pokemon.FastAttack[0].Type)}"></span>
-            <span class='name'>{{pokemon.FastAttack[0].Name}}</span>
-            <span class='dmg'>{{pokemon.FastAttack[0].Damage}}</span>
-          </li>
-          <li class='second' v-if='pokemon.SpecialAttack.length'>
-            <span class='type' :style="{backgroundPosition: getType(pokemon.SpecialAttack[0].Type)}"></span>
-            <span class='name'>{{pokemon.SpecialAttack[0].Name}}</span>
-            <span class='dmg'>{{pokemon.SpecialAttack[0].Damage}}</span>
-          </li>
-        </ul>
-        <ul class='autre'>
-          <li>
-            <span class='title'>Faiblesse</span>
-            <div class='list'>
-              <span class='type' v-for='weak in pokemon.Weaknesses.slice(0,3)' 
-              :key='weak'
-              :style="{backgroundPosition: getType(weak)}"></span>
-            </div>
-          </li>
-          <li>
-            <span class='title'>Résistances</span>
-            <div class='list'>
-              <span class='type' v-for='resist in pokemon.Resistant.slice(0,3)' 
-              :key='resist'
-              :style="{backgroundPosition: getType(resist)}"></span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>  
+    </div>  
+  </router-link>
 </template>
 
 
@@ -107,6 +112,30 @@ export default {
   padding: 8px;
   margin: 10px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+
+    .edit {
+      display: flex;
+    }
+  }
+
+  .edit {
+    display: none;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: rgba(20,20,20, 0.7);
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+  }
 
   .container {
     width: 100%;
