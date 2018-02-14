@@ -6,7 +6,7 @@ module.exports = function(app) {
         .post(pokemon.create_pokemon);
 
 
-    app.route('/pokemon/:pokemonId')
+    app.route('/pokemon/:Number')
         .get(pokemon.read_pokemon)
         .put(pokemon.update_pokemon)
         .delete(pokemon.delete_pokemon);
