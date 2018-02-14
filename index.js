@@ -12,7 +12,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/pokemondb');
 // start with > mongod
 
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -29,6 +28,9 @@ routes_pokemon(app); //register the route for pokemon
 
 let routes_user = require('./api/routes/userRoute');
 routes_user(app); //register the route for user
+
+let routes_api = require('./api/routes/apiRoute');
+routes_api(app); //register the route for user
 
 
 
