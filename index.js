@@ -4,6 +4,7 @@ let express = require('express'),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Pokemon = require('./api/models/pokemon'), //created model loading here
+    User = require('./api/models/user'), //created model loading here
     bodyParser = require('body-parser');
 
 /** mongoose instance connection url connection **/
@@ -23,9 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-let routes_pokemon = require('./api/routes/pokemonRoute'); //importing route
+let routes_pokemon = require('./api/routes/pokemonRoute');
 routes_pokemon(app); //register the route for pokemon
-let routes_user = require('./api/routes/userRoute'); //importing route
+
+let routes_user = require('./api/routes/userRoute');
 routes_user(app); //register the route for user
 
 

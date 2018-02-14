@@ -17,4 +17,4 @@ module.exports = function(app) {
     app.route('/users/:userId/pokemons/:pokemonId')
         .get(user.read_pokemon_user)
         .delete(user.delete_pokemon_user);
-}
+};
