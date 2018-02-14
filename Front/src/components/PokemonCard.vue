@@ -3,18 +3,47 @@
     <div class='container' :style="{'background-image': `url(${getTexture})`}">
       <div class='title'>
         <span class='level'>
-          <span>NIVEAU {{pokemon.level}}</span>
+          <span>NIVEAU 1</span>
         </span>
-        <span class='name'>{{pokemon.name}}</span>
+        <span class='name'>{{pokemon.Name}}</span>
         <span class='pv'>90<span>pv</span></span>
         <span class='type' :style="{backgroundPosition: getIcon}"></span>
       </div>
       <div class='img-container'>
-        <div class='img' :style="{'background-image': `url(${pokemon.img})`}"></div>
+        <div class='img' :style="{'background-image': `url(${getImage})`}"></div>
         <div class='img-info'>n°378 Pokémon truc Taille: 2cm  Poids: 10kg</div>
       </div>
       <div class='infos'>
-        
+        <ul class='attacks'>
+          <li class='first' v-if='pokemon.FastAttack.length'>
+            <span class='type' :style="{backgroundPosition: getType(pokemon.FastAttack[0].Type)}"></span>
+            <span class='name'>{{pokemon.FastAttack[0].Name}}</span>
+            <span class='dmg'>{{pokemon.FastAttack[0].Damage}}</span>
+          </li>
+          <li class='second' v-if='pokemon.SpecialAttack.length'>
+            <span class='type' :style="{backgroundPosition: getType(pokemon.SpecialAttack[0].Type)}"></span>
+            <span class='name'>{{pokemon.SpecialAttack[0].Name}}</span>
+            <span class='dmg'>{{pokemon.SpecialAttack[0].Damage}}</span>
+          </li>
+        </ul>
+        <ul class='autre'>
+          <li>
+            <span class='title'>Faiblesse</span>
+            <div class='list'>
+              <span class='type' v-for='weak in pokemon.Weaknesses.slice(0,3)' 
+              :key='weak'
+              :style="{backgroundPosition: getType(weak)}"></span>
+            </div>
+          </li>
+          <li>
+            <span class='title'>Résistances</span>
+            <div class='list'>
+              <span class='type' v-for='resist in pokemon.Resistant.slice(0,3)' 
+              :key='resist'
+              :style="{backgroundPosition: getType(resist)}"></span>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>  
@@ -34,23 +63,31 @@ export default {
   data() {
     return {
       types: [
-        "normal",
-        "grass",
-        "psychic",
-        "fire",
-        "fighting",
-        "water",
-        "electric"
+        "Normal",
+        "Grass",
+        "Psychic",
+        "Fire",
+        "Ground",
+        "Water",
+        "Electric"
       ]
     }
   },
   computed: {
     getTexture() {
-      return require(`../assets/PokemonTextures/${this.pokemon.type}.png`)
+      return require(`../assets/PokemonTextures/${this.pokemon.Types[0]}.png`)
     },
     getIcon() {
-      let type = this.types.indexOf(this.pokemon.type);
-      console.log(type)
+      let type = this.types.indexOf(this.pokemon.Types[0]);
+      return `${ -type*18}px 0px`;
+    },
+    getImage() {
+      return `https://raw.githubusercontent.com/fanzeyi/Pokemon-DB/master/img/${this.pokemon.Number}${this.pokemon.Name}.png`
+    }
+  },
+  methods: {
+    getType(value) {
+      let type = this.types.indexOf(value);
       return `${ -type*18}px 0px`;
     }
   }
@@ -137,11 +174,11 @@ export default {
       margin: 0px 5px 5px 5px;
 
       .img{
-        height: 130px;
+        height: 150px;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         background-position: center center;
-        background-color: rgb(58, 58, 58);
+        background-color: rgb(207, 207, 207);
         border-bottom: 3px solid rgb(233, 233, 233);
       }
 
@@ -152,16 +189,78 @@ export default {
       }
     }
 
-    &.electrique {
-      background-color: rgb(255, 208, 0);
-    }
+    .infos {
+      display: flex;
+      flex-flow: column wrap;
 
-    &.feu {
-      background-color: rgb(255, 123, 0);
-    }
+      ul.attacks {
+        display: flex;
+        flex-flow: column wrap;
+        padding: 0 10px 10px 5px;
+        border-bottom: 1px solid black;
 
-    &.plante {
-      background-color: rgb(99, 238, 81);
+        li {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          margin-top: 15px;
+
+          .type {
+            display: flex;
+            background-image: url("../assets/types.png");
+            flex: 0 0 auto;
+            height: 20px;
+            width: 20px;
+            background-size: 128px 36px;
+            font-weight: bold;
+          }
+
+          .name {
+            font-weight: bold;
+            flex: 1 1 auto;
+            color: black;
+          }
+
+          .dmg {
+            font-weight: bold;
+            flex: 0 0 auto;
+            font-size: 16px;
+          }
+        }
+        
+      }
+      ul.autre {
+        display: flex;
+        flex-flow: row nowrap;
+
+        li {
+          display: flex;
+          flex-flow: column wrap;
+          justify-content: center;
+          flex: 1 1 auto;
+
+          .title {
+              font-size: 10px; font-weight: bold;
+            }
+
+          .list {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            margin-top: 5px;
+
+            .type {
+              display: flex;
+              background-image: url("../assets/types.png");
+              flex: 0 0 auto;
+              height: 20px;
+              width: 20px;
+              background-size: 128px 36px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
   }
 }

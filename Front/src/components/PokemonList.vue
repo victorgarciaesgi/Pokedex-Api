@@ -4,7 +4,7 @@
 
     <ul v-if='pokemonList.length'>
       <PokeCard v-for="pokemon in filteredPokemons" 
-        :key="pokemon.idPokedex"
+        :key="pokemon.Number"
         :pokemon='pokemon'/>
     </ul>
     <div v-else class='loader'>
@@ -20,7 +20,8 @@
 <script>
 
 import axios from 'axios';
-import PokeCard from './PokemonCard.vue'
+import PokeCard from './PokemonCard.vue';
+import {sortBy} from 'lodash'
 
 export default {
   name: 'PokemonList',
@@ -32,15 +33,14 @@ export default {
   },
   computed: {
     filteredPokemons() {
-      return this.pokemonList.filter(element => {
-        console.log(element.name)
-        let index = element.name.toLowerCase().indexOf(this.$store.state.search);
-        console.log(index, this.$store.state.search);
+      let list = this.pokemonList.filter(element => {
+        let index = element.Name.toLowerCase().indexOf(this.$store.state.search.toLowerCase());
         return index > -1;
       })
+      return sortBy(list, o => o.Number);
     }
   },
-  async created() {
+  async mounted() {
     let {data} = await axios.get('http://localhost:3000/pokemons');
     console.log(data);
     this.pokemonList = data;
@@ -53,17 +53,22 @@ export default {
 <style lang='scss' scoped>
 
 .pokemons-container{
+  position: relative;
   display: flex;
   padding: 20px;
   height: 100%;
   width: 100%;
-  background-color: rgb(80,80,80);
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 auto;
 
   ul {
     display: flex;
     flex-flow: row wrap;
+    flex: 1 1 auto;
     justify-content: center;
     width: 100%;
+    height: 100%;
     padding: 20px;
 
 
