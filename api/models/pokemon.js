@@ -12,22 +12,31 @@ let mongoose = require('mongoose');
 
 
 let pokemonSchema = mongoose.Schema({
-    idPokedex: {
-        type: Number
-    },
-    name: {
+    Number: {
         type: String
     },
-    type: {
+    Name: {
         type: String
     },
-    level: {
-        type: Number
+    Level: {
+        type: Number,
+        default: 1
     },
-    img: {
-        type: String
+    Types: {
+        type: Array
+    },
+    Resistant: {
+        type: Array
+    },
+    Weaknesses: {
+        type: Array
+    },
+    FastAttack: {
+        type: Array
+    },
+    SpecialAttack: {
+        type: Array
     }
 });
-
 
 module.exports = mongoose.model('Pokemon', pokemonSchema);
