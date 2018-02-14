@@ -89,8 +89,6 @@ export default {
       fill: rgb(60,60,60);
     }
   }
-
-
 }
 
 label {

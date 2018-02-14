@@ -6,12 +6,12 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 
-
 export const store = new Vuex.Store({
   state: {
     userConnected: false,
     userInfos: null,
-    userPokemons: []
+    userPokemons: [],
+    search: '',
   },
   mutations: {
     connectUser(state, userInfos) {
@@ -38,5 +38,5 @@ export const store = new Vuex.Store({
       }
       return false;
     }
-  }
+  },
 })
