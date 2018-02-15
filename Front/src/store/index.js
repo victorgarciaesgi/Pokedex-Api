@@ -14,9 +14,11 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    userConnected: false,
+    userConnected: true,
     pokemonList: [],
-    userInfos: [],
+    userInfos: {
+      name: 'Victor',
+    },
     userPokemons: [],
     search: '',
     fetching: false,
@@ -61,15 +63,29 @@ export const store = new Vuex.Store({
     },
     async fetchMyPokemons(context) {
       context.state.fetching = true;
-      let {data} = await axios.get(`http://localhost:3000/users/${context.state.userInfos.id}/pokemons`);
-      context.commit('updateMyPokemons', data);
-      console.log(data);
-      context.state.fetching = false;
+      let {data} = await axios.get(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`);
+      if (data) {
+        context.commit('updateMyPokemons', data);
+        console.log(data);
+        context.state.fetching = false;
+      }
+      return true;
     },
     async addPokemon(context, pokemon) {
-      let {data} = await axios.get('http://localhost:3000/pokemons');
-      context.commit('updateListPokemons', data);
-      console.log(data);
+      let {data} = await axios.post(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+      if (data) {
+        context.commit('updateListPokemons', data);
+        console.log(data);
+      }
+      return true;
+    },
+    async deletePokemon(context, pokemon) {
+      let {data} = await axios.delete(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+      if (data) {
+        context.commit('updateListPokemons', data);
+        console.log(data);
+      }
+      return true;
     },
     async connexionRequest(context, formData) {
       let {data} = await axios.post('http://localhost:3000/users/connexion', formData);

@@ -257,7 +257,8 @@ export default {
         background-size: contain;
         background-position: center center;
         background-color: rgb(48, 48, 48);
-        border: 2px solid rgb(233, 140, 33)
+        border: 2px solid rgb(233, 140, 33);
+        box-shadow: 0 0 10px rgba(10,10,10, 0.3);
       }
     }
 

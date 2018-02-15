@@ -37,6 +37,10 @@ const Rooter = new Router({
       path: '/inscription',
       name: 'Inscription',
       component: Views.Inscription,
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })

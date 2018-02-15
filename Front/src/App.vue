@@ -66,18 +66,17 @@ html, body {
   min-height: calc(100% - 50px);
 }
 
-
 .input-form {
   position: relative;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(220,220,220);
   color: rgb(70,70,70);
-  height: 35px;
+  height: 40px;
   padding: 5px 30px 5px 9px;
   margin: 5px 0 5px 0;
   width: 100%;
-  line-height: 35px;
-  font-size: 13px;
-  border-radius: 5px;
+  line-height: 30px;
+  font-size: 15px;
+  border-radius: 3px;
 
   &:focus{
     background-color: rgb(225,225,225);
