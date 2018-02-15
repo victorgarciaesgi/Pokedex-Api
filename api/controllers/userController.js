@@ -78,11 +78,12 @@ exports.create_pokemon_user = function(req, res){
         if (!user) return res.status(404).send("User non trouvé - method read_user");
         user.pokemonsCatched.push({
             Id: shortid.generate(),
+            Name: req.body.Name,
             Number: req.body.Number,
             Level: 1
         });
         user.save();
-        res.status(200).send(user);
+        res.status(200).send(user.pokemonsCatched);
     });
 };
 
@@ -95,6 +96,24 @@ exports.read_pokemon_user = function(req, res){
         res.status(200).send(pokemonUser);
     });
 };
+
+exports.update_pokemon_user = function (req, res) {
+    User.findOne({name: req.params.name}, function (err, user) {
+        if (err) return res.status(500).send("Erreur : method read_user");
+        if (!user) return res.status(404).send("User non trouvé - method read_user");
+        user.pokemonsCatched.map(elem => {
+            if (elem.Id == req.params.Id) {
+                elem.Name = req.body.Name;
+                elem.Level = req.body.Level;
+
+                return elem
+            }
+            return elem
+        });
+        user.save();
+        res.status(200).send(user.pokemonsCatched);
+    });
+}
 
 /** delete pokemon user **/
 exports.delete_pokemon_user = function(req, res){
