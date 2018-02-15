@@ -11,7 +11,7 @@
       <img class='loading' src='../assets/loading.svg'>
     </div>
 
-    <router-view></router-view>
+    <router-view/>
   </div>
   
   

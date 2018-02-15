@@ -3,6 +3,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import {timeout} from '../utils';
 import {sortBy} from 'lodash';
+import jwtDecode from 'jwt-decode';
 
 
 
@@ -16,7 +17,7 @@ export const store = new Vuex.Store({
     userInfos: null,
     userPokemons: [],
     search: '',
-    fetching: true,
+    fetching: false,
   },
   getters: {
     filteredPokemons(state) {
@@ -52,15 +53,18 @@ export const store = new Vuex.Store({
       
     },
     async connexionRequest(context, formData) {
-      let {data} = await axios.post('route', formData);
+      let {data} = await axios.post('http://localhost:3000/users/connexion', formData);
+      console.log(data);
       if (data) {
+        let jwt = await jwt_decode(data.jwt)
         context.commit('connectUser', data.userInfos);
         return true;
       }
       return false;
     },
     async submitRequest(context, formData) {
-      let {data} = await axios.post('route', formData);
+      let {data} = await axios.post('http://localhost:3000/users', formData);
+      console.log(data);
       if (data) {
         return true;
       }
