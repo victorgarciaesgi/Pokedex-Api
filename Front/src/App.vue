@@ -66,7 +66,8 @@ html, body {
   justify-content: center;
   align-content: center;
   align-items: center;
-  min-height: calc(100% - 50px);
+  height: calc(100% - 50px);
+  max-height: calc(100% - 50px);
 }
 
 .input-form {

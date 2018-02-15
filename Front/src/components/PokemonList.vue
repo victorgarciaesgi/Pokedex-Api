@@ -1,6 +1,6 @@
 <template>
 
-  <div class='pokemons-container'>
+  <div class='pokemons-container' v-lazyload @lazy='scroll()'>
     <ul v-if='$store.state.pokemonList.length'>
       <PokeCard v-for="pokemon in $store.getters.filteredPokemons" 
         :modify='false'
@@ -33,6 +33,11 @@ export default {
      
     }
   },
+  methods: {
+    scroll() {
+      console.log('lazy');
+    }
+  },
   async mounted() {
     await this.$store.dispatch('fetchPokemons');
   }
@@ -49,6 +54,7 @@ export default {
   padding: 20px;
   height: 100%;
   width: 100%;
+  overflow-y: auto;
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;

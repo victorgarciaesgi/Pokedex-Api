@@ -11,6 +11,15 @@ Vue.use(Vuex);
 
 const TIMEOUT = 5000;
 
+const headers = () => {
+  let authToken = "";
+  const userState = store.state;
+  if (userState.userConnected) {
+    authToken = { "Authorization": `Bearer ${userState.token}`}
+  }
+  return authToken;
+}
+
 
 export const store = new Vuex.Store({
   state: {
@@ -19,6 +28,7 @@ export const store = new Vuex.Store({
     userInfos: {
       // name: 'Victor',
     },
+    token: null,
     userPokemons: [],
     search: '',
     fetching: false,
@@ -82,7 +92,9 @@ export const store = new Vuex.Store({
     },
     async fetchMyPokemons(context) {
       context.state.fetching = true;
-      let {data} = await axios.get(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`);
+      let {data} = await axios.get(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, {
+        headers: header()
+      });
       if (data) {
         context.commit('updateMyPokemons', data);
         console.log(data);
@@ -91,7 +103,9 @@ export const store = new Vuex.Store({
       return true;
     },
     async addPokemon(context, pokemon) {
-      let {data} = await axios.post(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+      let {data} = await axios.post(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon, {
+        headers: header()
+      });
       if (data) {
         context.commit('updateListPokemons', data);
         console.log(data);
@@ -99,7 +113,9 @@ export const store = new Vuex.Store({
       return true;
     },
     async editPokemon(context, pokemon) {
-      let {data} = await axios.put(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+      let {data} = await axios.put(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon, {
+        headers: header()
+      });
       if (data) {
         context.commit('updateListPokemons', data);
         console.log(data);
@@ -107,7 +123,9 @@ export const store = new Vuex.Store({
       return true;
     },
     async deletePokemon(context, pokemon) {
-      let {data} = await axios.delete(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+      let {data} = await axios.delete(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon, {
+        headers: header()
+      });
       if (data) {
         context.commit('updateListPokemons', data);
         console.log(data);
