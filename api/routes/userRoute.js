@@ -5,16 +5,16 @@ module.exports = function(app) {
         .get(user.list_all_users)
         .post(user.create_user);
 
-    app.route('/users/:userId')
+    app.route('/users/:name')
         .put(user.update_user)
         .get(user.read_user)
         .delete(user.delete_user);
 
-    app.route('/users/:userId/pokemons')
+    app.route('/users/:name/pokemons')
         .get(user.list_pokemons_user)
         .post(user.create_pokemon_user);
 
-    app.route('/users/:userId/pokemons/:pokemonId')
+    app.route('/users/:name/pokemons/:Id')
         .get(user.read_pokemon_user)
         .delete(user.delete_pokemon_user);
 };

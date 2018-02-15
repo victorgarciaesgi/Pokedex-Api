@@ -1,16 +1,16 @@
 let mongoose = require('mongoose');
 
 let userSchema = mongoose.Schema({
-    Name: {
+    name: {
         type: String,
     },
-    Email: {
+    email: {
         type: String,
     },
-    Password: {
+    password: {
         type: String
     },
-    PokemonsCaptures: {
+    pokemonsCaptures: {
         type: Array
     }
 });

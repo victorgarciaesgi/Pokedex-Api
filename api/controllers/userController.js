@@ -1,6 +1,7 @@
 let mongoose = require('mongoose'),
     User = mongoose.model('User'),
     jwt = require('jsonwebtoken'),
+    shortid = require('shortid'),
     config = require('../config.js');
 
 /** list users **/
@@ -16,10 +17,9 @@ exports.list_all_users = function(req, res) {
 /** create user **/
 exports.create_user = function(req, res){
     User.create({
-        Name : req.body.name,
-        Email : req.body.email,
-        Password : req.body.password,
-        PokemonsCaptures: []
+        name : req.body.name,
+        email : req.body.email,
+        password : req.body.password
     },
     function (err, user) {
         if (err) return res.status(500).send("Erreur : method create_user");
@@ -29,7 +29,7 @@ exports.create_user = function(req, res){
 
 /** display user **/
 exports.read_user = function(req, res){
-    User.findById(req.params.id, function (err, user) {
+    User.findOne({name: req.params.name}, function (err, user) {
         if (err) return res.status(500).send("Erreur : method read_user");
         if (!user) return res.status(404).send("User non trouvé - method read_user");
         res.status(200).send(user);
@@ -38,7 +38,7 @@ exports.read_user = function(req, res){
 
 /** edit user **/
 exports.update_user = function (req, res) {
-    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {
+    User.findOneAndUpdate({name: req.params.name}, req.body, {new: true}, function (err, user) {
         if (err) return res.status(500).send("Erreur : method update_user");
         res.status(200).send(user);
     });
@@ -46,7 +46,7 @@ exports.update_user = function (req, res) {
 
 /** delete user **/
 exports.delete_user = function(req, res) {
-    User.findByIdAndRemove(req.params.id, function (err, user) {
+    User.findOneAndRemove({name: req.params.name}, function (err, user) {
         if (err) return res.status(500).send("Erreur : method delete_user");
         res.status(200).send("User : "+ user.name +" supprimé.");
     });
@@ -54,21 +54,45 @@ exports.delete_user = function(req, res) {
 
 /** list pokemons user **/
 exports.list_pokemons_user = function(req, res){
-
+    User.find({name: req.params.name}, function (err, user) {
+        if (err) return res.status(500).send("Erreur : method list_pokemons_user");
+        if (!user) return res.status(404).send("User non trouvé - method list_pokemons_user");
+        res.status(200).send(user.pokemonsCatched);
+    });
 };
 
 /** create pokemons user **/
 exports.create_pokemon_user = function(req, res){
-
+    User.findOne({name: req.params.name}, function (err, user) {
+        if (err) return res.status(500).send("Erreur : method read_user");
+        if (!user) return res.status(404).send("User non trouvé - method read_user");
+        user.pokemonsCatched.push({
+            Id: shortid.generate(),
+            Number: req.body.Number,
+            Level: 1
+        });
+        user.save();
+        res.status(200).send(user);
+    });
 };
 
 /** display pokemon user **/
 exports.read_pokemon_user = function(req, res){
-
-
+    User.findOne({name: req.params.name}, function (err, user) {
+        if (err) return res.status(500).send("Erreur : method read_user");
+        if (!user) return res.status(404).send("User non trouvé - method read_user");
+        let pokemonUser = user.pokemonsCatched.find(el => el.Id == req.params.Id);
+        res.status(200).send(pokemonUser);
+    });
 };
 
 /** delete pokemon user **/
 exports.delete_pokemon_user = function(req, res){
-
+    User.findOne({name: req.params.name}, function (err, user) {
+        if (err) return res.status(500).send("Erreur : method read_user");
+        if (!user) return res.status(404).send("User non trouvé - method read_user");
+        user.pokemonsCatched = user.pokemonsCatched.filter(el => el.Id != req.params.Id);
+        user.save();
+        res.status(200).send("Pokemon supprimé");
+    });
 };
