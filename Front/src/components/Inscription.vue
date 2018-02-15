@@ -3,17 +3,17 @@
 <form @submit.prevent='handleSubmit'>
     <div class='container'>
         <label>Nom</label>
-        <input type="text"
+        <input required type="text"
                 class='input-form'
                 placeholder='Nom'
                 v-model='LoginData.name'>
         <label>Email</label>
-        <input type="email"
+        <input required type="email"
                 class='input-form'
                 placeholder='Adresse email'
                 v-model="LoginData.email">
         <label>Mot de passe</label>
-        <input type="password"
+        <input required type="password"
                 class='input-form'
                 placeholder='Mot de passe'
                 v-model='LoginData.password'>

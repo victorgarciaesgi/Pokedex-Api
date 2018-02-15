@@ -1,12 +1,13 @@
 <template>
 
   <div class='pokemons-container'>
-    <ul v-if='$store.state.userPokemons.length'>
+    <ul v-if='finish'>
       <PokeCard v-for="pokemon in $store.getters.filteredPokemons"
         :modify='false'
         :key="pokemon._id"
         :pokemon='pokemon'>
       </PokeCard>
+      <span v-if="$store.getters.filteredPokemons.length">Aucun Pokémons</span>
     </ul>
     <div v-else class='loader'>
       <img class='loading' src='../assets/loading.svg'>
@@ -30,11 +31,13 @@ export default {
   components: {PokeCard},
   data() {
     return {
-     
+     finish: false
     }
   },
   async mounted() {
     await this.$store.dispatch('fetchMyPokemons');
+    console.log('fi')
+    this.finish = true;
   }
 }
 

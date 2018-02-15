@@ -27,6 +27,11 @@
         </router-link>
       </ul>
     </template>
+    <template v-else>
+      <ul class='routes right'>
+        <li>{{$store.state.userInfos.name}}</li>
+      </ul>
+    </template>
   </header>
 
 </template>
