@@ -16,7 +16,6 @@
     <router-view/>
   </div>
   
-  
 </template>
 
 

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <HeaderComponent/>
+    <Alerts/>
     <div class='view'>
       <router-view/>
     </div>
@@ -10,11 +11,13 @@
 <script>
 
 import HeaderComponent from './components/Header.vue'
+import Alerts from './components/Alerts.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HeaderComponent
+    HeaderComponent, Alerts
   },
   mounted() {
     this.$store.dispatch('checkUserSession');

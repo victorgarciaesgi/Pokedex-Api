@@ -47,6 +47,7 @@ const Rooter = new Router({
 
 
 Rooter.beforeEach(async (to, from, next) => {
+  document.title = to.name;
   if (to.meta.requiresAuth) {
     if (store.state.userConnected) {
       next()
