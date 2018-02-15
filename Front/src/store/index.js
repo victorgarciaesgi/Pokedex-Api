@@ -4,6 +4,7 @@ import axios from 'axios';
 import {timeout} from '../utils';
 import {sortBy} from 'lodash';
 import jwtDecode from 'jwt-decode';
+import router from '../router'
 import * as jwt from './jwt';
 
 
@@ -51,6 +52,12 @@ export const store = new Vuex.Store({
     },
     updateMyPokemons(state, list) {
       state.userPokemons = list;
+    },
+    disconnectUser(state) {
+      state.userConnected = false;
+      state.userInfos = {};
+      state.userPokemons = [];
+      router.push('/');
     }
   },
   actions: {
@@ -96,6 +103,10 @@ export const store = new Vuex.Store({
         return true;
       }
       return false;
+    },
+    disconnectRequest(context) {
+      jwt.clear();
+      context.commit('disconnectUser');
     },
     async checkUserSession(){
       let token = jwt.fetch();
