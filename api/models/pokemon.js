@@ -36,6 +36,15 @@ let pokemonSchema = mongoose.Schema({
     },
     SpecialAttack: {
         type: Array
+    },
+    PreviousEvolution: {
+        type: Array
+    },
+    NextEvolution: {
+        type: Array
+    },
+    MaxHP: {
+        type: Number
     }
 });
 

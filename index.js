@@ -8,9 +8,7 @@ let express = require('express'),
 
 /** mongoose instance connection url connection **/
 mongoose.Promise = global.Promise;
-
 connex = ('mongodb://localhost/pokemondb');
-
 mongoose.connect(connex, function(err) {
     if (err) throw err;
     console.log('Successfully connected to MongoDB');

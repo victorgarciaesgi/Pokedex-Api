@@ -62,7 +62,7 @@
       "Amount": 25,
       "Name": "Bulbasaur candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 2,
         "Name": "Ivysaur"
@@ -134,7 +134,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 1,
         "Name": "Bulbasaur"
@@ -144,7 +144,7 @@
       "Amount": 100,
       "Name": "Bulbasaur candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 3,
         "Name": "Venusaur"
@@ -212,7 +212,7 @@
       "Maximum": "2.25m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 1,
         "Name": "Bulbasaur"
@@ -287,7 +287,7 @@
       "Amount": 25,
       "Name": "Charmander candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 5,
         "Name": "Charmeleon"
@@ -358,7 +358,7 @@
       "Maximum": "1.24m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 4,
         "Name": "Charmander"
@@ -368,7 +368,7 @@
       "Amount": 100,
       "Name": "Charmander candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 6,
         "Name": "Charizard"
@@ -436,7 +436,7 @@
       "Maximum": "1.91m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 4,
         "Name": "Charmander"
@@ -508,7 +508,7 @@
       "Amount": 25,
       "Name": "Squirtle candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 8,
         "Name": "Wartortle"
@@ -581,7 +581,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 7,
         "Name": "Squirtle"
@@ -591,7 +591,7 @@
       "Amount": 100,
       "Name": "Squirtle candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 9,
         "Name": "Blastoise"
@@ -660,7 +660,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 7,
         "Name": "Squirtle"
@@ -722,7 +722,7 @@
       "Amount": 12,
       "Name": "Caterpie candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 11,
         "Name": "Metapod"
@@ -780,7 +780,7 @@
       "Maximum": "0.79m"
     },
     "FleeRate": 0.09,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 10,
         "Name": "Caterpie"
@@ -790,7 +790,7 @@
       "Amount": 50,
       "Name": "Caterpie candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 12,
         "Name": "Butterfree"
@@ -858,7 +858,7 @@
       "Maximum": "1.24m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 10,
         "Name": "Caterpie"
@@ -924,7 +924,7 @@
       "Amount": 12,
       "Name": "Weedle candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 14,
         "Name": "Kakuna"
@@ -986,7 +986,7 @@
       "Maximum": "0.68m"
     },
     "FleeRate": 0.09,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 13,
         "Name": "Weedle"
@@ -996,7 +996,7 @@
       "Amount": 50,
       "Name": "Weedle candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 15,
         "Name": "Beedrill"
@@ -1064,7 +1064,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 13,
         "Name": "Weedle"
@@ -1138,7 +1138,7 @@
       "Amount": 12,
       "Name": "Pidgey candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 17,
         "Name": "Pidgeotto"
@@ -1208,7 +1208,7 @@
       "Maximum": "1.24m"
     },
     "FleeRate": 0.09,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 16,
         "Name": "Pidgey"
@@ -1218,7 +1218,7 @@
       "Amount": 50,
       "Name": "Pidgey candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 18,
         "Name": "Pidgeot"
@@ -1284,7 +1284,7 @@
       "Maximum": "1.69m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 16,
         "Name": "Pidgey"
@@ -1352,7 +1352,7 @@
       "Amount": 25,
       "Name": "Rattata candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 20,
         "Name": "Raticate"
@@ -1412,7 +1412,7 @@
       "Maximum": "0.79m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 19,
         "Name": "Rattata"
@@ -1482,7 +1482,7 @@
       "Amount": 50,
       "Name": "Spearow candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 22,
         "Name": "Fearow"
@@ -1548,7 +1548,7 @@
       "Maximum": "1.35m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 21,
         "Name": "Spearow"
@@ -1617,7 +1617,7 @@
       "Amount": 50,
       "Name": "Ekans candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 24,
         "Name": "Arbok"
@@ -1682,7 +1682,7 @@
       "Maximum": "3.94m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 23,
         "Name": "Ekans"
@@ -1748,7 +1748,7 @@
       "Amount": 50,
       "Name": "Pikachu candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 26,
         "Name": "Raichu"
@@ -1810,7 +1810,7 @@
       "Maximum": "0.9m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 25,
         "Name": "Pikachu"
@@ -1878,7 +1878,7 @@
       "Amount": 50,
       "Name": "Sandshrew candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 28,
         "Name": "Sandslash"
@@ -1942,7 +1942,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 27,
         "Name": "Sandshrew"
@@ -2011,7 +2011,7 @@
       "Amount": 25,
       "Name": "Nidoran♀ candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 30,
         "Name": "Nidorina"
@@ -2080,7 +2080,7 @@
       "Maximum": "0.9m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 29,
         "Name": "Nidoran ♀"
@@ -2090,7 +2090,7 @@
       "Amount": 100,
       "Name": "Nidoran♀ candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 31,
         "Name": "Nidoqueen"
@@ -2159,7 +2159,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 29,
         "Name": "Nidoran ♀"
@@ -2232,7 +2232,7 @@
       "Amount": 25,
       "Name": "Nidoran♂ candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 33,
         "Name": "Nidorino"
@@ -2301,7 +2301,7 @@
       "Maximum": "1.01m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 32,
         "Name": "Nidoran ♂"
@@ -2311,7 +2311,7 @@
       "Amount": 100,
       "Name": "Nidoran♂ candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 34,
         "Name": "Nidoking"
@@ -2380,7 +2380,7 @@
       "Maximum": "1.57m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 32,
         "Name": "Nidoran ♂"
@@ -2452,7 +2452,7 @@
       "Amount": 50,
       "Name": "Clefairy candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 36,
         "Name": "Clefable"
@@ -2516,7 +2516,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 35,
         "Name": "Clefairy"
@@ -2587,7 +2587,7 @@
       "Amount": 50,
       "Name": "Vulpi"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 38,
         "Name": "Ninetales"
@@ -2654,7 +2654,7 @@
       "Maximum": "1.24m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 37,
         "Name": "Vulpix"
@@ -2723,7 +2723,7 @@
       "Amount": 50,
       "Name": "Jigglypuff candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 39,
         "Name": "Jigglypuff"
@@ -2788,7 +2788,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 40,
         "Name": "Wigglytuff"
@@ -2860,7 +2860,7 @@
       "Amount": 50,
       "Name": "Zubat candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 42,
         "Name": "Golbat"
@@ -2928,7 +2928,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 41,
         "Name": "Zubat"
@@ -3000,7 +3000,7 @@
       "Amount": 25,
       "Name": "Oddish candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 44,
         "Name": "Gloom"
@@ -3072,7 +3072,7 @@
       "Maximum": "0.9m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 43,
         "Name": "Oddish"
@@ -3082,7 +3082,7 @@
       "Amount": 100,
       "Name": "Oddish candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 45,
         "Name": "Vileplume"
@@ -3150,7 +3150,7 @@
       "Maximum": "1.35m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 43,
         "Name": "Oddish"
@@ -3228,7 +3228,7 @@
       "Amount": 50,
       "Name": "Paras candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 47,
         "Name": "Parasect"
@@ -3298,7 +3298,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 46,
         "Name": "Paras"
@@ -3370,7 +3370,7 @@
       "Amount": 50,
       "Name": "Venonat candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 49,
         "Name": "Venomoth"
@@ -3438,7 +3438,7 @@
       "Maximum": "1.69m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 48,
         "Name": "Venonat"
@@ -3506,7 +3506,7 @@
       "Amount": 50,
       "Name": "Diglett candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 51,
         "Name": "Dugtrio"
@@ -3570,7 +3570,7 @@
       "Maximum": "0.79m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 50,
         "Name": "Diglett"
@@ -3634,7 +3634,7 @@
       "Amount": 50,
       "Name": "Meowth candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 53,
         "Name": "Persian"
@@ -3694,7 +3694,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 52,
         "Name": "Meowth"
@@ -3762,7 +3762,7 @@
       "Amount": 50,
       "Name": "Psyduck candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 55,
         "Name": "Golduck"
@@ -3831,7 +3831,7 @@
       "Maximum": "1.91m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 54,
         "Name": "Psyduck"
@@ -3899,7 +3899,7 @@
       "Amount": 50,
       "Name": "Mankey candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 57,
         "Name": "Primeape"
@@ -3963,7 +3963,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 56,
         "Name": "Mankey"
@@ -4034,7 +4034,7 @@
       "Amount": 50,
       "Name": "Growlithe candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 59,
         "Name": "Arcanine"
@@ -4101,7 +4101,7 @@
       "Maximum": "2.14m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 58,
         "Name": "Growlithe"
@@ -4169,7 +4169,7 @@
       "Amount": 25,
       "Name": "Poliwag candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 61,
         "Name": "Poliwhirl"
@@ -4237,7 +4237,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 60,
         "Name": "Poliwag"
@@ -4247,7 +4247,7 @@
       "Amount": 100,
       "Name": "Poliwag candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 62,
         "Name": "Poliwrath"
@@ -4318,7 +4318,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 60,
         "Name": "Poliwag"
@@ -4348,7 +4348,6 @@
       "Dark"
     ],
     "FastAttack": [
-      {},
       {
         "Name": "Zen Headbutt",
         "Type": "Psychic",
@@ -4385,7 +4384,7 @@
       "Amount": 25,
       "Name": "Abra candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 64,
         "Name": "Kadabra"
@@ -4452,7 +4451,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 63,
         "Name": "Abra"
@@ -4462,7 +4461,7 @@
       "Amount": 100,
       "Name": "Abra candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 65,
         "Name": "Alakazam"
@@ -4525,7 +4524,7 @@
       "Maximum": "1.69m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 63,
         "Name": "Abra"
@@ -4597,7 +4596,7 @@
       "Amount": 25,
       "Name": "Machop candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 67,
         "Name": "Machoke"
@@ -4665,7 +4664,7 @@
       "Maximum": "1.69m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 66,
         "Name": "Machop"
@@ -4675,7 +4674,7 @@
       "Amount": 100,
       "Name": "Machop candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 68,
         "Name": "Machamp"
@@ -4739,7 +4738,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 66,
         "Name": "Machop"
@@ -4815,7 +4814,7 @@
       "Amount": 25,
       "Name": "Bellsprout candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 70,
         "Name": "Weepinbell"
@@ -4887,7 +4886,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 69,
         "Name": "Bellsprout"
@@ -4897,7 +4896,7 @@
       "Amount": 100,
       "Name": "Bellsprout candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 71,
         "Name": "Victreebel"
@@ -4965,7 +4964,7 @@
       "Maximum": "1.91m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 69,
         "Name": "Bellsprout"
@@ -5043,7 +5042,7 @@
       "Amount": 50,
       "Name": "Tentacool candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 73,
         "Name": "Tentacruel"
@@ -5113,7 +5112,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 72,
         "Name": "Tentacool"
@@ -5188,7 +5187,7 @@
       "Amount": 25,
       "Name": "Geodude candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 75,
         "Name": "Graveler"
@@ -5263,7 +5262,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 74,
         "Name": "Geodude"
@@ -5273,7 +5272,7 @@
       "Amount": 100,
       "Name": "Geodude candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 76,
         "Name": "Golem"
@@ -5344,7 +5343,7 @@
       "Maximum": "1.57m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 74,
         "Name": "Geodude"
@@ -5419,7 +5418,7 @@
       "Amount": 50,
       "Name": "Ponyta candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 78,
         "Name": "Rapidash"
@@ -5486,7 +5485,7 @@
       "Maximum": "1.91m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 77,
         "Name": "Ponyta"
@@ -5560,7 +5559,7 @@
       "Amount": 50,
       "Name": "Slowpoke candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 80,
         "Name": "Slowbro"
@@ -5630,7 +5629,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 79,
         "Name": "Slowpoke"
@@ -5708,7 +5707,7 @@
       "Amount": 50,
       "Name": "Magnemite candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 82,
         "Name": "Magneton"
@@ -5782,7 +5781,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 81,
         "Name": "Magnemite"
@@ -5811,7 +5810,6 @@
       "Rock"
     ],
     "FastAttack": [
-      {},
       {
         "Name": "Fury Cutter",
         "Type": "Bug",
@@ -5910,7 +5908,7 @@
       "Amount": 50,
       "Name": "Doduo candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 85,
         "Name": "Dodrio"
@@ -5976,7 +5974,7 @@
       "Maximum": "2.02m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 84,
         "Name": "Doduo"
@@ -6044,7 +6042,7 @@
       "Amount": 50,
       "Name": "Seel candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 87,
         "Name": "Dewgong"
@@ -6109,7 +6107,7 @@
       "Maximum": "1.91m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 86,
         "Name": "Seel"
@@ -6178,7 +6176,7 @@
       "Amount": 50,
       "Name": "Grimer candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 89,
         "Name": "Muk"
@@ -6243,7 +6241,7 @@
       "Maximum": "1.35m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 88,
         "Name": "Grimer"
@@ -6311,7 +6309,7 @@
       "Amount": 50,
       "Name": "Shellder candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 91,
         "Name": "Cloyster"
@@ -6376,7 +6374,7 @@
       "Maximum": "1.69m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 90,
         "Name": "Shellder"
@@ -6449,7 +6447,7 @@
       "Amount": 25,
       "Name": "Gastly candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 93,
         "Name": "Haunter"
@@ -6522,7 +6520,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 92,
         "Name": "Gastly"
@@ -6532,7 +6530,7 @@
       "Amount": 100,
       "Name": "Gastly candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 94,
         "Name": "Gengar"
@@ -6601,7 +6599,7 @@
       "Maximum": "1.69m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 92,
         "Name": "Gastly"
@@ -6737,7 +6735,7 @@
       "Amount": 50,
       "Name": "Drowzee candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 97,
         "Name": "Hypno"
@@ -6800,7 +6798,7 @@
       "Maximum": "1.8m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 96,
         "Name": "Drowzee"
@@ -6868,7 +6866,7 @@
       "Amount": 50,
       "Name": "Krabby candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 99,
         "Name": "Kingler"
@@ -6932,7 +6930,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 98,
         "Name": "Krabby"
@@ -6998,7 +6996,7 @@
       "Amount": 50,
       "Name": "Voltorb candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 101,
         "Name": "Electrode"
@@ -7060,7 +7058,7 @@
       "Maximum": "1.35m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 100,
         "Name": "Voltorb"
@@ -7131,7 +7129,7 @@
       "Amount": 50,
       "Name": "E"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 103,
         "Name": "Exeggutor"
@@ -7203,7 +7201,7 @@
       "Maximum": "2.25m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 102,
         "Name": "Exeggcute"
@@ -7271,7 +7269,7 @@
       "Amount": 50,
       "Name": "Cubone candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 105,
         "Name": "Marowak"
@@ -7335,7 +7333,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 104,
         "Name": "Cubone"
@@ -7579,7 +7577,7 @@
       "Amount": 50,
       "Name": "Koffing candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 110,
         "Name": "Weezing"
@@ -7644,7 +7642,7 @@
       "Maximum": "1.35m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 109,
         "Name": "Koffing"
@@ -7719,7 +7717,7 @@
       "Amount": 50,
       "Name": "Rhyhorn candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 112,
         "Name": "Rhydon"
@@ -7790,7 +7788,7 @@
       "Maximum": "2.14m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 111,
         "Name": "Rhyhorn"
@@ -8024,7 +8022,7 @@
       "Amount": 50,
       "Name": "Horsea candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 117,
         "Name": "Seadra"
@@ -8088,7 +8086,7 @@
       "Maximum": "1.35m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 116,
         "Name": "Horsea"
@@ -8156,7 +8154,7 @@
       "Amount": 50,
       "Name": "Goldeen candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 119,
         "Name": "Seaking"
@@ -8220,7 +8218,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 118,
         "Name": "Goldeen"
@@ -8288,7 +8286,7 @@
       "Amount": 50,
       "Name": "Staryu candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 121,
         "Name": "Starmie"
@@ -8358,7 +8356,7 @@
       "Maximum": "1.24m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 120,
         "Name": "Staryu"
@@ -8826,7 +8824,7 @@
       "Amount": 400,
       "Name": "Magikarp candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 130,
         "Name": "Gyarados"
@@ -8893,7 +8891,7 @@
       "Maximum": "7.31m"
     },
     "FleeRate": 0.07,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 129,
         "Name": "Magikarp"
@@ -9055,7 +9053,7 @@
       "Amount": 25,
       "Name": "Eevee candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 134,
         "Name": "Vaporeon"
@@ -9122,7 +9120,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 133,
         "Name": "Eevee"
@@ -9179,7 +9177,7 @@
       "Maximum": "0.9m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 133,
         "Name": "Eevee"
@@ -9241,7 +9239,7 @@
       "Maximum": "1.01m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 133,
         "Name": "Eevee"
@@ -9367,7 +9365,7 @@
       "Amount": 50,
       "Name": "Omanyte candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 139,
         "Name": "Omastar"
@@ -9435,7 +9433,7 @@
       "Maximum": "1.13m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 138,
         "Name": "Omanyte"
@@ -9507,7 +9505,7 @@
       "Amount": 50,
       "Name": "Kabuto candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 141,
         "Name": "Kabutops"
@@ -9575,7 +9573,7 @@
       "Maximum": "1.46m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 140,
         "Name": "Kabuto"
@@ -9929,7 +9927,7 @@
       "Amount": 25,
       "Name": "Dratini candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 148,
         "Name": "Dragonair"
@@ -9989,7 +9987,7 @@
       "Maximum": "4.5m"
     },
     "FleeRate": 0.06,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 147,
         "Name": "Dratini"
@@ -9999,7 +9997,7 @@
       "Amount": 100,
       "Name": "Dratini candies"
     },
-    "Next evolution(s)": [
+    "NextEvolution": [
       {
         "Number": 149,
         "Name": "Dragonite"
@@ -10068,7 +10066,7 @@
       "Maximum": "2.48m"
     },
     "FleeRate": 0.05,
-    "Previous evolution(s)": [
+    "PreviousEvolution": [
       {
         "Number": 147,
         "Name": "Dratini"
