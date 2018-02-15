@@ -12,7 +12,7 @@
           <div class='alert-text'>
             <span>{{alert.message}}</span>
           </div>
-          <div class='alert-quit' @click="$store.dispatch('deleteAlert', alert)">
+          <div class='alert-quit' @click="$store.commit('deleteAlert', alert)">
             <img src='~../assets/quit.svg'>
           </div>
         </li>
