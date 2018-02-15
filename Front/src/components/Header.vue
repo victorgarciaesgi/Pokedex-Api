@@ -30,6 +30,8 @@
     <template v-else>
       <ul class='routes right'>
         <li>{{$store.state.userInfos.name}}</li>
+        <li @click='disconnect()'>Deconnexion</li>
+
       </ul>
     </template>
   </header>
@@ -41,7 +43,12 @@
 <script>
 
 export default {
-  name: 'HeaderComponent'
+  name: 'HeaderComponent',
+  methods: {
+    disconnect() {
+      this.$store.dispatch('disconnectRequest');
+    }
+  }
 }
 
 </script>
