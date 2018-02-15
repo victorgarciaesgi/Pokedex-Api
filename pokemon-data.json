@@ -4348,7 +4348,6 @@
       "Dark"
     ],
     "FastAttack": [
-      {},
       {
         "Name": "Zen Headbutt",
         "Type": "Psychic",
@@ -5811,7 +5810,6 @@
       "Rock"
     ],
     "FastAttack": [
-      {},
       {
         "Name": "Fury Cutter",
         "Type": "Bug",

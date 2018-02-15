@@ -4,7 +4,7 @@ let mongoose = require('mongoose'),
 
 /** list pokemons **/
 exports.list_all_pokemons = function(req, res) {
-    let query = Pokemon.find({}).select(attributesSelect);
+    let query = Pokemon.find({}).select(attributesSelect).sort([['Number', 'ascending']]);
     query.exec(function (err, pokemons) {
         if (err)
             res.send(err)
