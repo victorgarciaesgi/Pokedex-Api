@@ -6,12 +6,12 @@ let mongoose = require('mongoose'),
 
 /** list users **/
 exports.list_all_users = function(req, res) {
-    jwt.verify(req.token, config.secret, (err, users) => {
+    //jwt.verify(req.token, config.secret, (err, users) => {
         User.find({}, function (err, users) {
             if (err) return res.status(500).send("Erreur : method list_all_users");
             res.status(200).send(users);
         });
-    });
+   // });
 };
 
 /** create user **/
@@ -54,7 +54,7 @@ exports.delete_user = function(req, res) {
 
 /** list pokemons user **/
 exports.list_pokemons_user = function(req, res){
-    User.find({name: req.params.name}, function (err, user) {
+    User.findOne({name: req.params.name}, function (err, user) {
         if (err) return res.status(500).send("Erreur : method list_pokemons_user");
         if (!user) return res.status(404).send("User non trouvé - method list_pokemons_user");
         res.status(200).send(user.pokemonsCatched);

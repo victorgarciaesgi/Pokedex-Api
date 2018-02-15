@@ -10,7 +10,7 @@ let userSchema = mongoose.Schema({
     password: {
         type: String
     },
-    pokemonsCaptures: {
+    pokemonsCatched: {
         type: Array
     }
 });

@@ -2,7 +2,7 @@ module.exports = function(app) {
     let pokemon = require('../controllers/pokemonController');
 
     app.route('/pokemons')
-        .get(pokemon.verifyToken, pokemon.list_all_pokemons)
+        .get(pokemon.list_all_pokemons)
         .post(pokemon.create_pokemon);
 
 
