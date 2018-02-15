@@ -1,6 +1,6 @@
 <template>
 
-  <div class='overlay' @click="$router.push('/')">
+  <div v-if='getPokemon' class='overlay' @click="$router.push('/')">
     <div class='window' @click.stop>
       <PokemonCard v-if='$store.state.pokemonList.length > 0' :pokemon='getPokemon'></PokemonCard>
     </div>
@@ -22,8 +22,13 @@ export default {
   computed: {
     getPokemon() {
       let pokemon = this.$store.getters.getPokemon(this.id);
-      document.title = pokemon.Name;
-      return pokemon;
+      if (pokemon) {
+        document.title = pokemon.Name;
+        return pokemon;
+      } else {
+        this.$router.push('/');
+        return false;
+      }
     }
   }
 }
