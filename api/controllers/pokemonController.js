@@ -5,7 +5,7 @@ let mongoose = require('mongoose'),
 
 /** list pokemons **/
 exports.list_all_pokemons = function(req, res) {
-    jwt.verify(req.token, config.secret, (err, pokemon) => {
+    jwt.verify(req.token, config.secret, (err, pokemons) => {
         let query = Pokemon.find({}).select('Number Name Types Resistant Weaknesses FastAttack SpecialAttack');
         query.exec(function (err, pokemons) {
             if (err)

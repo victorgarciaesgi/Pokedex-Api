@@ -1,6 +1,5 @@
 let express = require('express'),
     app = express(),
-    jwt = require('jsonwebtoken'),
     port = process.env.PORT || 3000,
     mongoose = require('mongoose'),
     Pokemon = require('./api/models/pokemon'), //created model loading here
@@ -9,7 +8,13 @@ let express = require('express'),
 
 /** mongoose instance connection url connection **/
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/pokemondb');
+
+connex = ('mongodb://localhost/pokemondb');
+
+mongoose.connect(connex, function(err) {
+    if (err) throw err;
+    console.log('Successfully connected to MongoDB');
+});
 // start with > mongod
 
 app.use(function(req, res, next) {
@@ -33,7 +38,6 @@ let routes_api = require('./api/routes/apiRoute');
 routes_api(app); //register the route for user
 
 
-
 app.listen(port);
 
-console.log(`API server started on: ${port}`);
+console.log(`API server started here:\nhttp://localhost:${port}`);

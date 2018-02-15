@@ -1,20 +1,25 @@
-let mongoose = require('mongoose');
-User = mongoose.model('User');
+let mongoose = require('mongoose'),
+    User = mongoose.model('User'),
+    jwt = require('jsonwebtoken'),
+    config = require('../config.js');
 
 /** list users **/
 exports.list_all_users = function(req, res) {
-    User.find({}, function (err, users) {
-        if (err) return res.status(500).send("Erreur : method list_all_users");
-        res.status(200).send(users);
+    jwt.verify(req.token, config.secret, (err, users) => {
+        User.find({}, function (err, users) {
+            if (err) return res.status(500).send("Erreur : method list_all_users");
+            res.status(200).send(users);
+        });
     });
 };
 
 /** create user **/
 exports.create_user = function(req, res){
     User.create({
-        name : req.body.name,
-        email : req.body.email,
-        password : req.body.password
+        Name : req.body.name,
+        Email : req.body.email,
+        Password : req.body.password,
+        PokemonsCaptures: []
     },
     function (err, user) {
         if (err) return res.status(500).send("Erreur : method create_user");
