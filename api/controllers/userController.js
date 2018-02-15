@@ -16,17 +16,16 @@ exports.list_all_users = function(req, res) {
 
 /** create user **/
 exports.create_user = function(req, res){
-    jwt.verify(req.token, config.secret, (err, user) => {
-        User.create({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
-            },
-            function (err, user) {
-                if (err) return res.status(500).send("Erreur : method create_user");
-                res.status(200).send(user);
-            });
-    });
+    User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        },
+        function (err, user) {
+            if (err) return res.status(500).send("Erreur : method create_user");
+            res.status(200).send(user);
+        }
+    );
 };
 
 /** display user **/
@@ -73,56 +72,64 @@ exports.list_pokemons_user = function(req, res){
 
 /** create pokemons user **/
 exports.create_pokemon_user = function(req, res){
-    User.findOne({name: req.params.name}, function (err, user) {
-        if (err) return res.status(500).send("Erreur : method read_user");
-        if (!user) return res.status(404).send("User non trouvé - method read_user");
-        user.pokemonsCatched.push({
-            Id: shortid.generate(),
-            Name: req.body.Name,
-            Number: req.body.Number,
-            Level: 1
+    jwt.verify(req.token, config.secret, (err, user) => {
+        User.findOne({name: req.params.name}, function (err, user) {
+            if (err) return res.status(500).send("Erreur : method read_user");
+            if (!user) return res.status(404).send("User non trouvé - method read_user");
+            user.pokemonsCatched.push({
+                Id: shortid.generate(),
+                Name: req.body.Name,
+                Number: req.body.Number,
+                Level: 1
+            });
+            user.save();
+            res.status(200).send(user.pokemonsCatched);
         });
-        user.save();
-        res.status(200).send(user.pokemonsCatched);
     });
 };
 
 /** display pokemon user **/
 exports.read_pokemon_user = function(req, res){
-    User.findOne({name: req.params.name}, function (err, user) {
-        if (err) return res.status(500).send("Erreur : method read_user");
-        if (!user) return res.status(404).send("User non trouvé - method read_user");
-        let pokemonUser = user.pokemonsCatched.find(el => el.Id == req.params.Id);
-        res.status(200).send(pokemonUser);
+    jwt.verify(req.token, config.secret, (err, user) => {
+        User.findOne({name: req.params.name}, function (err, user) {
+            if (err) return res.status(500).send("Erreur : method read_pokemon_user");
+            if (!user) return res.status(404).send("User non trouvé - method read_pokemon_user");
+            let pokemonUser = user.pokemonsCatched.find(el => el.Id == req.params.Id);
+            res.status(200).send(pokemonUser);
+        });
     });
 };
 
 exports.update_pokemon_user = function (req, res) {
-    User.findOne({name: req.params.name}, function (err, user) {
-        if (err) return res.status(500).send("Erreur : method read_user");
-        if (!user) return res.status(404).send("User non trouvé - method read_user");
-        user.pokemonsCatched.map(elem => {
-            if (elem.Id == req.params.Id) {
-                elem.Name = req.body.Name;
-                elem.Level = req.body.Level;
+    jwt.verify(req.token, config.secret, (err, user) => {
+        User.findOne({name: req.params.name}, function (err, user) {
+            if (err) return res.status(500).send("Erreur : method updates_pokemon_user");
+            if (!user) return res.status(404).send("User non trouvé - method update_pokemon_user");
+            user.pokemonsCatched.map(elem => {
+                if (elem.Id == req.params.Id) {
+                    elem.Name = req.body.Name;
+                    elem.Level = req.body.Level;
 
+                    return elem
+                }
                 return elem
-            }
-            return elem
+            });
+            user.save();
+            res.status(200).send(user.pokemonsCatched);
         });
-        user.save();
-        res.status(200).send(user.pokemonsCatched);
     });
-}
+};
 
 /** delete pokemon user **/
 exports.delete_pokemon_user = function(req, res){
-    User.findOne({name: req.params.name}, function (err, user) {
-        if (err) return res.status(500).send("Erreur : method read_user");
-        if (!user) return res.status(404).send("User non trouvé - method read_user");
-        user.pokemonsCatched = user.pokemonsCatched.filter(el => el.Id != req.params.Id);
-        user.save();
-        res.status(200).send("Pokemon supprimé");
+    jwt.verify(req.token, config.secret, (err, user) => {
+        User.findOne({name: req.params.name}, function (err, user) {
+            if (err) return res.status(500).send("Erreur : method read_user");
+            if (!user) return res.status(404).send("User non trouvé - method read_user");
+            user.pokemonsCatched = user.pokemonsCatched.filter(el => el.Id != req.params.Id);
+            user.save();
+            res.status(200).send("Pokemon supprimé");
+        });
     });
 };
 

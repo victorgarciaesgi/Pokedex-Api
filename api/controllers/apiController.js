@@ -15,19 +15,22 @@ exports.index = function(req, res) {
 
 /** login **/
 exports.login = function(req, res){
-    // Mock user
-    // const user = {
-    //     id: 1,
-    //     username: 'joe',
-    //     email: 'joe@gmail.com',
-    //     password: 'mdpJoe'
-    // };
+
     let user = req.body;
 
-    jwt.sign({user}, config.secret, { expiresIn: '30s' }, (err, token) => {
-        res.json({
-            token
-        });
+    console.log(user);
+
+    User.findOne({name: user.name}, function (err, user) {
+        if (err) return res.status(500).send("Erreur : method login");
+        if (!user) {
+            return res.status(404).send("User non trouvé !")
+        }else{
+            jwt.sign({user}, config.secret, { expiresIn: '30s' }, (err, token) => {
+                res.json({
+                    token
+                });
+            });
+        }
     });
 };
 
