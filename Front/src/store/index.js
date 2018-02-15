@@ -11,11 +11,12 @@ Vue.use(Vuex);
 
 const TIMEOUT = 5000;
 
-const headers = {};
+let HTTP;
 
 
 export const store = new Vuex.Store({
   state: {
+    sessionChecked: false,
     userConnected: false,
     pokemonList: [],
     userInfos: {
@@ -37,10 +38,24 @@ export const store = new Vuex.Store({
       return list;
     },
     getPokemon(state) {
-      return number => state.pokemonList.find(element => Number(element.Number) === Number(number));
+      return number => state.pokemonList.find(element => {
+        return Number(element.Number) === Number(number)
+      });
     },
-    getMyPokemons(state) {
-      return state.userPokemons.map(elem => state.getters.getPokemon(elem));
+    getMyPokemon(state, getters) {
+      return number => getters.getMyPokemons.find(element => {
+        return Number(element.Number) === Number(number)
+      });
+    },
+    getMyPokemons(state, getters) {
+      return state.userPokemons.map(elem => {
+        let pokemon = getters.getPokemon(elem.Number);
+        elem = Object.assign({},pokemon, {
+          Name2: elem.Name,
+          Level: elem.Level,
+        });
+        return elem;
+      });
     }
   },
   mutations: {
@@ -64,6 +79,7 @@ export const store = new Vuex.Store({
       state.userInfos = {};
       state.userPokemons = [];
       router.push('/');
+      defaultHeader();
     },
     addAlert(state, alert) {
       state.notificationList.push(alert);
@@ -80,14 +96,12 @@ export const store = new Vuex.Store({
     async fetchPokemons(context) {
       context.state.fetching = true;
       let {data} = await HTTP.get('http://localhost:3000/pokemons');
-      context.dispatch('addNotification', {type: 'error', message:'Erreur'})
       context.commit('updateListPokemons', data);
       console.log(data);
       context.state.fetching = false;
     },
     async fetchMyPokemons(context) {
       context.state.fetching = true;
-      console.log(HTTP);
       let {data} = await HTTP.get(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`);
       if (data) {
         context.commit('updateMyPokemons', data);
@@ -121,13 +135,16 @@ export const store = new Vuex.Store({
       return true;
     },
     async connexionRequest(context, formData) {
+      formData = JSON.stringify(formData);
+      formData = JSON.parse(formData);
+      console.log(formData)
       let {data} = await HTTP.post('http://localhost:3000/api/login', formData);
       console.log(data);
       if (data) {
-        let {user} = await jwtDecode(data.token);
-        jwt.set(data.token);
-        router.push('/mypokemons')
+        let {user} = await jwtDecode(data);
+        jwt.set(data);
         context.commit('connectUser', {user, token: data.token});
+        router.push('/mypokemons')
         return true;
       }
       return false;
@@ -136,14 +153,15 @@ export const store = new Vuex.Store({
       jwt.clear();
       context.commit('disconnectUser');
     },
-    async checkUserSession(context){
+    async checkUserSession(context) {
       let token = jwt.fetch();
       if (!!token) {
-        let user = await jwtDecode(token);
+        let {user} = await jwtDecode(token);
         context.commit('connectUser', {user, token});
       } else {
         console.log('User not logged');
       }
+      context.state.sessionChecked = true;
     },
     async submitRequest(context, formData) {
       let {data} = await axios.post('http://localhost:3000/users', formData);
@@ -170,14 +188,16 @@ const setHeaders = (state) => {
   HTTP = axios.create({
     headers: { 
       "Authorization": `Bearer ${state.token}`, 
-      'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+      "Content-Type": "application/json",
     }
   });
 }
 
-let HTTP = axios.create({
-  headers: { 
-    "Authorization": `Bearer azdzaa`, 
-    'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
-  }
-});
+const defaultHeader = () => {
+  HTTP = axios.create({
+    headers: { 
+      "Content-Type": "application/json",
+    }
+  });
+}
+defaultHeader();

@@ -26,9 +26,9 @@ exports.login = function(req, res){
             return res.status(404).send("User non trouvé !")
         }else{
             jwt.sign({user}, config.secret, { expiresIn: '30s' }, (err, token) => {
-                res.json({
+                res.send(
                     token
-                });
+                );
             });
         }
     });

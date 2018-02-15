@@ -1,12 +1,12 @@
 <template>
-  <router-link :to='`/pokemon/${pokemon.Number}`'>
+  <router-link :to='getRoute'>
     <div class='pokemon' :class='[modify]'>
       <div class='container' :style="{'background-image': `url(${getTexture})`}">
         <div class='title'>
           <span class='level'>
             <span>NIVEAU {{pokemon.Level}}</span>
           </span>
-          <span class='name'>{{pokemon.Name}}</span>
+          <span class='name'>{{pokemon.Name2 || pokemon.Name}}</span>
           <span class='pv'>{{getPV}}<span>pv</span></span>
           <span class='type' :style="{backgroundPosition: getIcon}"></span>
         </div>
@@ -50,7 +50,7 @@
           </ul>
         </div>
       </div>
-      <div class='edit' @click='handleClick($event)'>
+      <div class='edit' @click.stop='handleClick($event)'>
         <img v-if='modify' src="~../assets/edit.svg" alt="">
         <img v-else src="~../assets/add.svg" alt="">
       </div>
@@ -71,18 +71,16 @@ export default {
   ],
   data() {
     return {
-      types: [
-        "Normal",
-        "Grass",
-        "Psychic",
-        "Fire",
-        "Ground",
-        "Water",
-        "Electric"
-      ]
+      types: ["Normal","Grass","Psychic","Fire","Ground","Water","Electric"]
     }
   },
   computed: {
+    getRoute() {
+      if (this.modify) {
+        return `/myPokemons/${this.pokemon.Number}`
+      }
+      return `/pokemon/${this.pokemon.Number}`;
+    },
     getTexture() {
       return require(`../assets/PokemonTextures/${this.pokemon.Types[0]}.png`)
     },

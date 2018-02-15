@@ -2,7 +2,7 @@
   <div id="app">
     <HeaderComponent/>
     <Alerts/>
-    <div class='view'>
+    <div class='view' v-if='this.$store.state.sessionChecked'>
       <router-view/>
     </div>
   </div>
@@ -20,7 +20,7 @@ export default {
     HeaderComponent, Alerts
   },
   mounted() {
-    this.$store.dispatch('checkUserSession');
+    
   }
 }
 </script>

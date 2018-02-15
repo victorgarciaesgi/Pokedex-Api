@@ -1,14 +1,17 @@
 <template>
 
-  <div v-if='$store.state.pokemonList.length > 0' class='overlay' @click="$router.push('/')">
+  <div v-if='$store.state.pokemonList.length > 0' class='overlay' @click="goBack()">
     <div class='window' @click.stop>
-      <PokemonCard v-for="prev in getPokemon.PreviousEvolution"
+      <PokemonCard v-if='!$route.meta.user' v-for="prev in getPokemon.PreviousEvolution"
         class='prev'
         :key="prev.Number"
         :pokemon='Pokemon(prev.Number)'
         />
-      <PokemonCard class='center' v-if='getPokemon' :pokemon='getPokemon'></PokemonCard>
-      <PokemonCard v-for="next in getPokemon.NextEvolution"
+      <PokemonCard class='center' 
+        :modify='$route.meta.user'
+        v-if='getPokemon' 
+        :pokemon='getPokemon'/>
+      <PokemonCard v-if='!$route.meta.user' v-for="next in getPokemon.NextEvolution"
         class='next'
         :key="next.Number"
         :pokemon='Pokemon(next.Number)'
@@ -31,7 +34,12 @@ export default {
   props: ['id'],
   computed: {
     getPokemon() {
-      let pokemon = this.$store.getters.getPokemon(this.id);
+      let pokemon;
+      if (this.$route.meta.user) {
+        pokemon = this.$store.getters.getMyPokemon(this.id);
+      } else {
+        pokemon = this.$store.getters.getPokemon(this.id);
+      }
       if (pokemon) {
         document.title = pokemon.Name;
         return pokemon;
@@ -39,9 +47,23 @@ export default {
         this.$router.push('/');
         return false;
       }
-    }
+    },
+    getRoute() {
+      if (this.$route.meta.user) {
+        return `/myPokemons/${this.pokemon.Number}`
+      }
+      return `/pokemon/${this.pokemon.Number}`;
+    },
   },
   methods: {
+    goBack() {
+      if (this.$route.meta.user) {
+        this.$router.push(`/myPokemons`);
+      } else {
+        this.$router.push(`/`);
+      }
+      
+    },
     Pokemon(id) {
       let pokemon = this.$store.getters.getPokemon(id);
       if (pokemon) {
@@ -49,7 +71,7 @@ export default {
       } 
       return false;
     }
-  }
+  },
 }
 
 </script>

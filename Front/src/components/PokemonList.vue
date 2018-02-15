@@ -37,9 +37,6 @@ export default {
     scroll() {
       console.log('lazy');
     }
-  },
-  async mounted() {
-    await this.$store.dispatch('fetchPokemons');
   }
 }
 

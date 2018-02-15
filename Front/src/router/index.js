@@ -24,6 +24,15 @@ const Rooter = new Router({
       path: '/myPokemons',
       name: 'Mes Pokémons',
       component: Views.MyPokemons,
+      children: [{
+        path: '/myPokemons/:id',
+        name: '',
+        props: true,
+        meta: {
+          user: true
+        },
+        component: Views.PokemonDetail
+      }],
       meta: {
         requiresAuth: true
       }
@@ -45,17 +54,25 @@ const Rooter = new Router({
   ]
 })
 
-
 Rooter.beforeEach(async (to, from, next) => {
-  document.title = to.name;
-  if (to.meta.requiresAuth) {
-    if (store.state.userConnected) {
-      next()
+  if (store.state.sessionChecked) {
+    document.title = to.name;
+    if (to.meta.requiresAuth) {
+      if (store.state.userConnected) {
+        next()
+      }
+      else {
+        Rooter.push('/connexion')
+      }
+    } else {
+      next();
     }
-    else {
-      Rooter.push('/connexion')
-    }
-  } else {
+  }
+  else {
+    await Promise.all([
+      store.dispatch('checkUserSession'),
+      store.dispatch('fetchPokemons')
+    ]);
     next();
   }
 })

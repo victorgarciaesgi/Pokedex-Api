@@ -2,11 +2,11 @@
 
 <form @submit.prevent='handleSubmit'>
   <div class='container'>
-      <label>Email</label>
-      <input required type="email"
+      <label>Nom</label>
+      <input required type="text"
         class='input-form'
         placeholder='Adresse email'
-        v-model="LoginData.email">
+        v-model="LoginData.name">
       <label>Mot de passe</label>
       <input required type="password" 
         class='input-form'
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       LoginData: {
-        email: '1@free.fr',
+        name: 'victor',
         password: 'aaaa'
       },
       submitting: false
