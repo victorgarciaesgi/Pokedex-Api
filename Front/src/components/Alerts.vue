@@ -53,11 +53,11 @@ ul#alertes-container {
     padding: 15px 10px 15px 0px;
     box-shadow: 0 0 10px rgba(20, 20, 20, 0.2);
     font-size: 14px;
-    color: white;
+    color: rgb(60,60,60);
     text-align: center;
     font-weight: bold;
     border-radius: 3px;
-    background-color: rgb(60,60,60);
+    background-color: white;
     line-height: 17px;
 
     div {

@@ -2,7 +2,7 @@ import Vuex from 'vuex';
 import Vue from 'vue';
 import axios from 'axios';
 import {timeout} from '../utils';
-import {sortBy} from 'lodash';
+import {sortBy, merge} from 'lodash';
 import jwtDecode from 'jwt-decode';
 import router from '../router'
 import * as jwt from './jwt';
@@ -14,10 +14,10 @@ const TIMEOUT = 5000;
 
 export const store = new Vuex.Store({
   state: {
-    userConnected: true,
+    userConnected: false,
     pokemonList: [],
     userInfos: {
-      name: 'Victor',
+      // name: 'Victor',
     },
     userPokemons: [],
     search: '',
@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
         let index = element.Name.toLowerCase().indexOf(state.search.toLowerCase());
         return index > -1;
       })
-      return sortBy(list, o => o.Number);
+      return list;
     },
     getPokemon(state) {
       return number => state.pokemonList.find(element => Number(element.Number) === Number(number));
@@ -98,6 +98,14 @@ export const store = new Vuex.Store({
       }
       return true;
     },
+    async editPokemon(context, pokemon) {
+      let {data} = await axios.put(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+      if (data) {
+        context.commit('updateListPokemons', data);
+        console.log(data);
+      }
+      return true;
+    },
     async deletePokemon(context, pokemon) {
       let {data} = await axios.delete(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
       if (data) {
@@ -107,10 +115,10 @@ export const store = new Vuex.Store({
       return true;
     },
     async connexionRequest(context, formData) {
-      let {data} = await axios.post('http://localhost:3000/users/connexion', formData);
+      let {data} = await axios.post('http://localhost:3000/users', formData);
       console.log(data);
       if (data) {
-        let userInfos = await jwt_decode(data.jwt)
+        let userInfos = await jwtDecode(data.jwt);
         context.commit('connectUser', userInfos );
         return true;
       }
@@ -139,7 +147,7 @@ export const store = new Vuex.Store({
     },
     async addNotification(context, alert) {
       alert = merge(alert, {
-        id: state.notificationCount,
+        id: context.state.notificationCount,
         isNotif: alert.isNotif || false
       })
       context.commit('addAlert',alert);

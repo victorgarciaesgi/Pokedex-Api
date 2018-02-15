@@ -35,8 +35,8 @@ export default {
   data() {
     return {
       LoginData: {
-        email: '',
-        password: ''
+        email: '1@free.fr',
+        password: 'aaaa'
       },
       submitting: false
     }
