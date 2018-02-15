@@ -1,10 +1,10 @@
 <template>
   <router-link :to='`/pokemon/${pokemon.Number}`'>
-    <div class='pokemon'>
+    <div class='pokemon' :class='[modify]'>
       <div class='container' :style="{'background-image': `url(${getTexture})`}">
         <div class='title'>
           <span class='level'>
-            <span>NIVEAU 1</span>
+            <span>NIVEAU {{pokemon.Level}}</span>
           </span>
           <span class='name'>{{pokemon.Name}}</span>
           <span class='pv'>{{getPV}}<span>pv</span></span>
@@ -13,6 +13,9 @@
         <div class='img-container'>
           <div class='img' :style="{'background-image': `url(${getImage})`}"></div>
           <div class='img-info'>n°378 Pokémon truc Taille: 2cm  Poids: 10kg</div>
+          <div class='evolution' v-if='pokemon.NextEvolution.length'
+            :style="{'background-image': `url(${Image(Pokemon(pokemon.NextEvolution[0].Number))})`}">
+            </div>
         </div>
         <div class='infos'>
           <ul class='attacks'>
@@ -47,8 +50,9 @@
           </ul>
         </div>
       </div>
-      <div class='edit'>
-        <img src="~../assets/edit.svg" alt="">
+      <div class='edit' @click='handleClick($event)'>
+        <img v-if='modify' src="~../assets/edit.svg" alt="">
+        <img v-else src="~../assets/add.svg" alt="">
       </div>
     </div>  
   </router-link>
@@ -63,7 +67,7 @@ import axios from 'axios';
 export default {
   name: 'PokemonCard',
   props: [
-    'pokemon'
+    'pokemon', 'modify'
   ],
   data() {
     return {
@@ -91,13 +95,33 @@ export default {
     },
     getPV() {
       return Math.round(Number(this.pokemon.MaxHP) / 200) * 10;
+    },
+    logPoke() {
+      console.log(this.pokemon)
     }
   },
   methods: {
+    handleClick() {
+      if (this.modify) {
+        // edit
+      } else {
+        this.$store.dispatch('addPokemon', this.pokemon.Number);
+      }
+    },
     getType(value) {
       let type = this.types.indexOf(value);
       return `${ -type*18}px 0px`;
-    }
+    },
+    Pokemon(id) {
+      let pokemon = this.$store.getters.getPokemon(id);
+      if (pokemon) {
+        return pokemon;
+      } 
+      return false;
+    },
+    Image(pokemon) {
+      return `https://raw.githubusercontent.com/fanzeyi/Pokemon-DB/master/img/${pokemon.Number}${pokemon.Name}.png`
+    },
   }
 }
 
@@ -199,6 +223,7 @@ export default {
     }
 
     .img-container {
+      position: relative;
       display: flex;
       flex-flow: column wrap;
       border: 3px solid rgb(233, 233, 233);
@@ -218,6 +243,21 @@ export default {
         background-color: rgb(233, 233, 233);
         box-shadow: inset 0 0 10px rgba(10,10,10,0.3);
         font-size: 7px;
+      }
+
+      .evolution {
+        position: absolute;
+        padding: 5px;
+        left: -10px;
+        top: -5px;
+        height: 35px;
+        width: 35px;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        background-color: rgb(48, 48, 48);
+        border: 2px solid rgb(233, 140, 33)
       }
     }
 

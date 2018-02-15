@@ -1,10 +1,10 @@
 <template>
 
   <div class='pokemons-container'>
-    <ul v-if='$store.state.pokemonList.length'>
-      <PokeCard v-for="pokemon in $store.getters.filteredPokemons" 
+    <ul v-if='$store.state.userPokemons.length'>
+      <PokeCard v-for="pokemon in $store.getters.filteredPokemons"
         :modify='false'
-        :key="pokemon.Number"
+        :key="pokemon._id"
         :pokemon='pokemon'>
       </PokeCard>
     </ul>
@@ -26,7 +26,7 @@ import axios from 'axios';
 import PokeCard from './PokemonCard.vue';
 
 export default {
-  name: 'PokemonList',
+  name: 'MyPokemons',
   components: {PokeCard},
   data() {
     return {
@@ -34,7 +34,7 @@ export default {
     }
   },
   async mounted() {
-    await this.$store.dispatch('fetchPokemons');
+    await this.$store.dispatch('fetchMyPokemons');
   }
 }
 

@@ -62,13 +62,14 @@ export default {
   height: auto;
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(10,10,10, 0.2);
-  padding: 30px;
+  padding: 20px 30px 10px 30px;
   background-color: white;
 
   .footer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin-top: 10px;
   }
 }
 
@@ -125,6 +126,8 @@ button {
   .loading{
     display: none;
     margin-left: 6px;
+    height: 24px;
+    width: 24px;
   }
 
   &.submitting {

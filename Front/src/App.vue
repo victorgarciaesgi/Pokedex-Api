@@ -15,6 +15,9 @@ export default {
   name: 'App',
   components: {
     HeaderComponent
+  },
+  mounted() {
+    this.$store.dispatch('checkUserSession');
   }
 }
 </script>

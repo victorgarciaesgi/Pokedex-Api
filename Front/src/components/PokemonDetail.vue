@@ -1,8 +1,18 @@
 <template>
 
-  <div v-if='getPokemon' class='overlay' @click="$router.push('/')">
+  <div v-if='$store.state.pokemonList.length > 0' class='overlay' @click="$router.push('/')">
     <div class='window' @click.stop>
-      <PokemonCard v-if='$store.state.pokemonList.length > 0' :pokemon='getPokemon'></PokemonCard>
+      <PokemonCard v-for="prev in getPokemon.PreviousEvolution"
+        class='prev'
+        :key="prev.Number"
+        :pokemon='Pokemon(prev.Number)'
+        />
+      <PokemonCard class='center' v-if='getPokemon' :pokemon='getPokemon'></PokemonCard>
+      <PokemonCard v-for="next in getPokemon.NextEvolution"
+        class='next'
+        :key="next.Number"
+        :pokemon='Pokemon(next.Number)'
+        />
     </div>
   </div>
 
@@ -30,13 +40,22 @@ export default {
         return false;
       }
     }
+  },
+  methods: {
+    Pokemon(id) {
+      let pokemon = this.$store.getters.getPokemon(id);
+      if (pokemon) {
+        return pokemon;
+      } 
+      return false;
+    }
   }
 }
 
 </script>
 
 
-<style lang='scss' scoped>
+<style lang='scss'>
 
 .overlay {
   z-index: 11000;
@@ -51,7 +70,17 @@ export default {
   align-items: center;
 
   .window {
-    transform: scale(1.3);
+    display: flex;
+    flex-flow: row nowrap;
+
+    div.pokemon {
+      margin-left: 50px;
+    }
+
+    .center {
+      transform: scale(1.3);
+    }
+    
   }
 }
 

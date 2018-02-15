@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import * as Views from '@/components';
+import {store} from '../store'
 
 
 Vue.use(Router);
@@ -20,6 +21,14 @@ const Rooter = new Router({
       }]
     },
     {
+      path: '/myPokemons',
+      name: 'Mes Pokémons',
+      component: Views.MyPokemons,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/connexion',
       name: 'Connexion',
       component: Views.Connexion,
@@ -34,15 +43,12 @@ const Rooter = new Router({
 
 
 Rooter.beforeEach(async (to, from, next) => {
-  if (!to.meta.contentProp) {
-    document.title = `${to.name}`;
-  }
   if (to.meta.requiresAuth) {
-    if (LoginStore.state.isLoggedIn) {
+    if (store.state.userConnected) {
       next()
     }
     else {
-      LoginStore.mutations.showLoginRoute(to.fullPath);
+      Rooter.push('/connexion')
     }
   } else {
     next();
