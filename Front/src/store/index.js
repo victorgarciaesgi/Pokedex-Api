@@ -133,11 +133,12 @@ export const store = new Vuex.Store({
       return true;
     },
     async connexionRequest(context, formData) {
-      let {data} = await axios.post('http://localhost:3000/users', formData);
+      let {data} = await axios.post('http://localhost:3000/api/login', formData);
       console.log(data);
       if (data) {
-        let userInfos = await jwtDecode(data.jwt);
-        context.commit('connectUser', userInfos );
+        let {user} = await jwtDecode(data.token);
+        console.log(user);
+        context.commit('connectUser', user );
         return true;
       }
       return false;
