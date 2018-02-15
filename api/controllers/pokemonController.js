@@ -1,6 +1,6 @@
 let mongoose = require('mongoose'),
     Pokemon = mongoose.model('Pokemon'),
-    attributesSelect = 'Number Name Types Resistant Weaknesses FastAttack SpecialAttack MaxHP NextEvolution PreviousEvolution';
+    attributesSelect = 'Number Name Types Resistant Weaknesses FastAttack SpecialAttack MaxHP NextEvolution PreviousEvolution Level';
 
 /** list pokemons **/
 exports.list_all_pokemons = function(req, res) {
