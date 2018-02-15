@@ -7,10 +7,9 @@ import jwtDecode from 'jwt-decode';
 import router from '../router'
 import * as jwt from './jwt';
 
-
-
-
 Vue.use(Vuex);
+
+const TIMEOUT = 5000;
 
 
 export const store = new Vuex.Store({
@@ -23,6 +22,8 @@ export const store = new Vuex.Store({
     userPokemons: [],
     search: '',
     fetching: false,
+    notificationCount: 0,
+    notificationList: []
   },
   getters: {
     filteredPokemons(state) {
@@ -58,12 +59,23 @@ export const store = new Vuex.Store({
       state.userInfos = {};
       state.userPokemons = [];
       router.push('/');
+    },
+    addAlert(state, alert) {
+      state.notificationList.push(alert);
+      state.notificationCount++;
+    },
+    deleteAlert(state, alert) {
+      var index = state.notificationList.findIndex(element => element.id === alert.id);
+      if (index !== -1) {
+        state.notificationList.splice(index, 1);
+      }
     }
   },
   actions: {
     async fetchPokemons(context) {
       context.state.fetching = true;
       let {data} = await axios.get('http://localhost:3000/pokemons');
+      context.dispatch('addNotification', {type: 'error', message:'Erreur'})
       context.commit('updateListPokemons', data);
       console.log(data);
       context.state.fetching = false;
@@ -124,6 +136,15 @@ export const store = new Vuex.Store({
         return data;
       }
       return false;
+    },
+    async addNotification(context, alert) {
+      alert = merge(alert, {
+        id: state.notificationCount,
+        isNotif: alert.isNotif || false
+      })
+      context.commit('addAlert',alert);
+      await timeout(TIMEOUT);
+      context.commit('deleteAlert', alert);
     }
   },
 
