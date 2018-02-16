@@ -54,9 +54,9 @@
       <div class='editPopup' v-show='editMode' @click.prevent>
         <form >
           <label for="">Nom</label>
-          <input required type="text" class='input-form' v-model='editData.Name'>
+          <input type="text" class='input-form' v-model='editData.Name'>
           <label for="">Level</label>
-          <input required type="text" class='input-form' v-model='editData.Level'>
+          <input type="text" class='input-form' v-model='editData.Level'>
 
           <div class='footer'>
             <button @click.prevent='closeEdit()'>
@@ -140,9 +140,10 @@ export default {
       this.closeEdit();
     },
     closeEdit() {
+      console.log('close')
       this.editMode = false,
       this.editData = {
-        Name: this.pokemon.Name,
+        Name: this.pokemon.Name2 || this.pokemon.Name,
         Level: this.pokemon.Level
       }
     },

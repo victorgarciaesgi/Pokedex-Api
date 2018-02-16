@@ -9,19 +9,30 @@ import {sync} from 'vuex-router-sync';
 
 Vue.config.productionTip = false;
 
+
 sync(store, router);
-var event = new Event('lazy');
+
+const emit = (vnode, name, data) => {
+  var handlers = vnode.data.on;
+  if (handlers && handlers.hasOwnProperty(name)) {
+    var handler = handlers[name];
+    var fn = handler.fns || handler.fn;
+    if (typeof fn === 'function') {
+      fn(data);
+    }
+  }
+} 
 
 Vue.directive('lazyload', {
   bind(el, binding, vnode) {
     el.addEventListener('scroll', () => {
       let scrollTop = el.scrollTop + el.offsetHeight;
       let scrollHeight = el.scrollHeight;
-      console.log(scrollTop, scrollHeight);
+      
       if (scrollTop >= scrollHeight) {
         event.preventDefault();
         event.stopPropagation();
-        el.dispatchEvent(event);
+        emit(vnode, 'lazy')
       }
     });
   }

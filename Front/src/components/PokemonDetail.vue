@@ -40,7 +40,6 @@ export default {
       } else {
         pokemon = this.$store.getters.getPokemon(this.id);
       }
-      console.log(pokemon);
       if (pokemon) {
         document.title = pokemon.Name;
         return pokemon;
@@ -55,7 +54,6 @@ export default {
       return `/pokemon/${this.pokemon.Number}`;
     },
     goBack() {
-      console.log(this.$route.meta.user)
       if (this.$route.meta.user) {
         return '/myPokemons';
       } else {

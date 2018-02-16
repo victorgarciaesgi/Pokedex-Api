@@ -105,15 +105,11 @@ exports.update_pokemon_user = function (req, res) {
         User.findOne({name: req.params.name}, function (err, user) {
             if (err) return res.status(500).send("Erreur : method updates_pokemon_user");
             if (!user) return res.status(404).send("User non trouvé - method update_pokemon_user");
-            user.pokemonsCatched.map(elem => {
-                if (elem.Id == req.params.Id) {
-                    elem.Name = req.body.Name;
-                    elem.Level = req.body.Level;
-
-                    return elem
-                }
-                return elem
-            });
+            let pokemon = user.pokemonsCatched.find(elem => elem.Id == req.params.Id);
+            pokemon.Name = req.body.Name;
+            pokemon.Level = req.body.Level;
+            
+            user.markModified('pokemonsCatched');
             user.save();
             res.status(200).send(user.pokemonsCatched);
         });

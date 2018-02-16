@@ -142,9 +142,6 @@ export const store = new Vuex.Store({
       return true;
     },
     async connexionRequest(context, formData) {
-      formData = JSON.stringify(formData);
-      formData = JSON.parse(formData);
-      console.log(formData)
       let {data} = await HTTP.post('http://localhost:3000/api/login', formData);
       console.log(data);
       if (data) {
