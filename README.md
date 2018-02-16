@@ -1,6 +1,13 @@
 # Pokedex API
 An API to get info on the Pokemons written in NodeJs/Express and Vue.js with Vue-Router and Vuex
 
+## Screnshots
+
+[accueil](https://github.com/victorgarciaesgi/Pokedex-Api/blob/master/captures/acceuil.png?raw=true)
+[mypokemons](https://github.com/victorgarciaesgi/Pokedex-Api/blob/master/captures/mypokemons.png?raw=true)
+[pokemon](https://github.com/victorgarciaesgi/Pokedex-Api/blob/master/captures/pokemon.png?raw=true)
+
+
 ## Install MongoDB and launch it
 
 ```bash
