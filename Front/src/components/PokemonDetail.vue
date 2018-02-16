@@ -1,6 +1,6 @@
 <template>
 
-  <div v-if='$store.state.pokemonList.length > 0' class='overlay' @click="goBack()">
+  <router-link v-if='$store.state.pokemonList.length > 0 && getPokemon' class='overlay' :to='goBack'>
     <div class='window' @click.stop>
       <PokemonCard v-if='!$route.meta.user' v-for="prev in getPokemon.PreviousEvolution"
         class='prev'
@@ -17,7 +17,7 @@
         :pokemon='Pokemon(next.Number)'
         />
     </div>
-  </div>
+  </router-link>
 
 
 </template>
@@ -40,11 +40,11 @@ export default {
       } else {
         pokemon = this.$store.getters.getPokemon(this.id);
       }
+      console.log(pokemon);
       if (pokemon) {
         document.title = pokemon.Name;
         return pokemon;
       } else {
-        this.$router.push('/');
         return false;
       }
     },
@@ -54,16 +54,16 @@ export default {
       }
       return `/pokemon/${this.pokemon.Number}`;
     },
+    goBack() {
+      console.log(this.$route.meta.user)
+      if (this.$route.meta.user) {
+        return '/myPokemons';
+      } else {
+        return `/`
+      }
+    }
   },
   methods: {
-    goBack() {
-      if (this.$route.meta.user) {
-        this.$router.push(`/myPokemons`);
-      } else {
-        this.$router.push(`/`);
-      }
-      
-    },
     Pokemon(id) {
       let pokemon = this.$store.getters.getPokemon(id);
       if (pokemon) {
@@ -95,7 +95,7 @@ export default {
     display: flex;
     flex-flow: row nowrap;
 
-    div.pokemon {
+    a.wrapper {
       margin-left: 50px;
     }
 

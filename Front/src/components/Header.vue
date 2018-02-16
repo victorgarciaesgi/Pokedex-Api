@@ -7,7 +7,7 @@
           <img class='logo' :class='{animate: $store.state.fetching}' src="~../assets/pokeball.png" alt="">
         </li>
       </router-link>
-      <router-link to='/mypokemons' v-if='$store.state.userConnected'>
+      <router-link to='/myPokemons' v-if='$store.state.userConnected'>
         <li>Mes pokémons</li>
       </router-link>
     </ul>

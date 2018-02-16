@@ -15,7 +15,7 @@ const Rooter = new Router({
       component: Views.PokemonList,
       children: [{
         path: '/pokemon/:id',
-        name: '',
+        name: 'Pokemon',
         props: true,
         component: Views.PokemonDetail
       }]
@@ -24,6 +24,9 @@ const Rooter = new Router({
       path: '/myPokemons',
       name: 'Mes Pokémons',
       component: Views.MyPokemons,
+      meta: {
+        requiresAuth: true
+      },
       children: [{
         path: '/myPokemons/:id',
         name: '',
@@ -33,9 +36,7 @@ const Rooter = new Router({
         },
         component: Views.PokemonDetail
       }],
-      meta: {
-        requiresAuth: true
-      }
+      
     },
     {
       path: '/connexion',
@@ -56,6 +57,7 @@ const Rooter = new Router({
 
 Rooter.beforeEach(async (to, from, next) => {
   if (store.state.sessionChecked) {
+    console.log(to)
     document.title = to.name;
     if (to.meta.requiresAuth) {
       if (store.state.userConnected) {

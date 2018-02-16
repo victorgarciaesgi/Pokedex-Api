@@ -7,7 +7,7 @@
         :key="pokemon.Id"
         :pokemon='pokemon'>
       </PokeCard>
-      <span v-if="!$store.getters.filteredPokemons.length">Aucun Pokémons</span>
+      <span v-if="!$store.getters.getMyPokemons">Aucun Pokémons</span>
     </ul>
     <div v-else class='loader'>
       <img class='loading' src='../assets/loading.svg'>

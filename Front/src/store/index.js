@@ -38,13 +38,13 @@ export const store = new Vuex.Store({
       return list;
     },
     getPokemon(state) {
-      return number => state.pokemonList.find(element => {
-        return Number(element.Number) === Number(number)
+      return id => state.pokemonList.find(element => {
+        return Number(element.Number) === Number(id)
       });
     },
     getMyPokemon(state, getters) {
-      return number => getters.getMyPokemons.find(element => {
-        return Number(element.Number) === Number(number)
+      return id => getters.getMyPokemons.find(element => {
+        return element.Id === id;
       });
     },
     getMyPokemons(state, getters) {
@@ -53,6 +53,7 @@ export const store = new Vuex.Store({
         elem = Object.assign({},pokemon, {
           Name2: elem.Name,
           Level: elem.Level,
+          Id: elem.Id
         });
         return elem;
       });
@@ -113,23 +114,29 @@ export const store = new Vuex.Store({
     async addPokemon(context, pokemon) {
       let {data} = await HTTP.post(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
       if (data) {
-        context.commit('updateListPokemons', data);
+        context.commit('updateMyPokemons', data);
+        context.dispatch('addNotification', {type: 'success', message:'Pokemon ajouté à votre pokédex'});
         console.log(data);
       }
       return true;
     },
-    async editPokemon(context, pokemon) {
-      let {data} = await HTTP.put(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons`, pokemon);
+    async editPokemon(context, {form, pokemon}) {
+      console.log(pokemon, form);
+      let {data} = await HTTP.put(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons/${pokemon}`, form);
       if (data) {
-        context.commit('updateListPokemons', data);
+        context.commit('updateMyPokemons', data);
+        context.dispatch('addNotification', {type: 'success', message:'Pokemon édité'});
+
         console.log(data);
       }
       return true;
     },
     async deletePokemon(context, pokemon) {
-      let {data} = await HTTP.delete(`http://localhost:3000/users/victor/pokemons`, pokemon);
+      let {data} = await HTTP.delete(`http://localhost:3000/users/victor/pokemons/${pokemon}`);
       if (data) {
-        context.commit('updateListPokemons', data);
+        context.commit('updateMyPokemons', data);
+        context.dispatch('addNotification', {type: 'success', message:'Pokemon supprimé'});
+
         console.log(data);
       }
       return true;

@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      console.log('lol')
       this.submitting = true;
       let response = await this.$store.dispatch('connexionRequest', this.LoginData);
       this.submitting = false;
@@ -118,7 +119,7 @@ button {
 
   span{
     font-size: 15px;
-    color: #e04b4b;
+    color: #414141;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -146,10 +147,9 @@ button {
   }
 
   &.blue span{
-    color: #e04b4b;
+    color: #4b87e0;
   }
 
-  
 }
 
 </style>
