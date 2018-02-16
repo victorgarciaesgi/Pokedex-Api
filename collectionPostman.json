@@ -1,0 +1,337 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PokedexApi",
+		"_postman_id": "99e7ed62-c7da-6a36-6275-f21e359c7daa",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Welcome - method: index",
+			"request": {
+				"url": "localhost:3000/api",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "creer un nouveau pokemon - method: create_pokemon",
+			"request": {
+				"url": "localhost:3000/pokemons",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W3siSWQiOiJCSkJFNlFFUEciLCJOYW1lIjoiUGlrYWNoaWxsIiwiTnVtYmVyIjoiMDAxIiwiTGV2ZWwiOiI3MCJ9LHsiSWQiOiJTeVNRMVY0RHoiLCJOYW1lIjoiTWF2ZXJpYyIsIk51bWJlciI6IjAwMSIsIkxldmVsIjoxfSx7IklkIjoiQmtiVko0TkRNIiwiTmFtZSI6Ik1hdmVyaWMiLCJOdW1iZXIiOiIwMDMiLCJMZXZlbCI6MX0seyJJZCI6IkhrQ192NEVEZiIsIk5hbWUiOiJDYXRlcnBpZSIsIk51bWJlciI6IjAxMCIsIkxldmVsIjoxfSx7IklkIjoicmtaS3ZOVndHIiwiTmFtZSI6IldlZWRsZSIsIk51bWJlciI6IjAxMyIsIkxldmVsIjoxfV0sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MTF9LCJpYXQiOjE1MTg3ODA5OTgsImV4cCI6MTUxODc4NDU5OH0.AHMCPRSjcEUFxBjyfR1HBliDVP9RWR4pIsL4bWNngcI",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Name",
+							"value": "Lastmoon",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Number",
+							"value": "155",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Level",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "supprime un pokemon - method: delete_pokemon",
+			"request": {
+				"url": "localhost:3000/pokemon/155",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "affiche tous les pokemons - method: list_all_pokemons",
+			"request": {
+				"url": "localhost:3000/pokemons",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "affiche un pokemon - method: read_pokemon",
+			"request": {
+				"url": "localhost:3000/pokemon/151",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "inscription utilisateur - method: create_user",
+			"request": {
+				"url": "localhost:3000/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "gauthier",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "gco@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "obtention du jwt - method: login",
+			"request": {
+				"url": "localhost:3000/api/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "gauthier",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mdpG",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "User mocked for the moment"
+			},
+			"response": []
+		},
+		{
+			"name": "liste des utilisateurs - method: list_all_users",
+			"request": {
+				"url": "localhost:3000/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc2NzgwNCwiZXhwIjoxNTE4NzY3ODM0fQ.A70MXS1JR4GlcauhGTE4yj6mUNgVvR3w03rMQKUJ4vM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "affiche un utilisateur - method: read_user",
+			"request": {
+				"url": "localhost:3000/users/gauthier",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc2NzgwNCwiZXhwIjoxNTE4NzY3ODM0fQ.A70MXS1JR4GlcauhGTE4yj6mUNgVvR3w03rMQKUJ4vM",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "suppression utilisateur - method: delete_user",
+			"request": {
+				"url": "localhost:3000/users/vico",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc2NzgwNCwiZXhwIjoxNTE4NzY3ODM0fQ.A70MXS1JR4GlcauhGTE4yj6mUNgVvR3w03rMQKUJ4vM",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "l'utilisateur capture un pokemon - method: create_pokemon_user",
+			"request": {
+				"url": "localhost:3000/users/gauthier/pokemons",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc3NTI1MSwiZXhwIjoxNTE4Nzc1MjgxfQ.6YwUdhonoq9Ka5PhaslVCzAdCXpDN5Q_JmdD6I0mm-Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Number",
+							"value": "003",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "affiche un pokemon de l'utilisateur - method: read_pokemon_user",
+			"request": {
+				"url": "localhost:3000/users/gauthier/pokemons/BkUmk4VDf",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc3NTI1MSwiZXhwIjoxNTE4Nzc1MjgxfQ.6YwUdhonoq9Ka5PhaslVCzAdCXpDN5Q_JmdD6I0mm-Q",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "supprime un pokemon utilisateur - method: delete_pokemon_user",
+			"request": {
+				"url": "localhost:3000/users/gauthier/pokemons/BkUmk4VDf",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc3NTI1MSwiZXhwIjoxNTE4Nzc1MjgxfQ.6YwUdhonoq9Ka5PhaslVCzAdCXpDN5Q_JmdD6I0mm-Q",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "modification d'un pokemon de l'utilisateur - method: update_pokemon_user",
+			"request": {
+				"url": "localhost:3000/users/gauthier/pokemons/BJBE6QEPG",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InBva2Vtb25zQ2F0Y2hlZCI6W10sIl9pZCI6IjVhODU5OTNhYThlZTQ2MzJhZDQxNGFjYiIsIm5hbWUiOiJnYXV0aGllciIsImVtYWlsIjoiZ2NvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoibWRwRyIsIl9fdiI6MH0sImlhdCI6MTUxODc3NTI1MSwiZXhwIjoxNTE4Nzc1MjgxfQ.6YwUdhonoq9Ka5PhaslVCzAdCXpDN5Q_JmdD6I0mm-Q",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Level",
+							"value": "70",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "Pikachill",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
