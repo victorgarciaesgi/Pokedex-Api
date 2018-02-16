@@ -128,7 +128,7 @@ exports.delete_pokemon_user = function(req, res){
             if (!user) return res.status(404).send("User non trouvé - method read_user");
             user.pokemonsCatched = user.pokemonsCatched.filter(el => el.Id != req.params.Id);
             user.save();
-            res.status(200).send("Pokemon supprimé");
+            res.status(200).send(user.pokemonsCatched);
         });
     });
 };
