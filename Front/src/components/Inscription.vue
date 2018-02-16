@@ -136,7 +136,7 @@ button {
   }
 
   &.blue span {
-    color: #e04b4b;
+    color: #4b87e0;
   }
 }
 </style>

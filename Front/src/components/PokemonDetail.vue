@@ -1,20 +1,23 @@
 <template>
 
-  <div v-if='$store.state.pokemonList.length > 0' class='overlay' @click="$router.push('/')">
+  <router-link v-if='$store.state.pokemonList.length > 0 && getPokemon' class='overlay' :to='goBack'>
     <div class='window' @click.stop>
-      <PokemonCard v-for="prev in getPokemon.PreviousEvolution"
+      <PokemonCard v-if='!$route.meta.user' v-for="prev in getPokemon.PreviousEvolution"
         class='prev'
         :key="prev.Number"
         :pokemon='Pokemon(prev.Number)'
         />
-      <PokemonCard class='center' v-if='getPokemon' :pokemon='getPokemon'></PokemonCard>
-      <PokemonCard v-for="next in getPokemon.NextEvolution"
+      <PokemonCard class='center' 
+        :modify='$route.meta.user'
+        v-if='getPokemon' 
+        :pokemon='getPokemon'/>
+      <PokemonCard v-if='!$route.meta.user' v-for="next in getPokemon.NextEvolution"
         class='next'
         :key="next.Number"
         :pokemon='Pokemon(next.Number)'
         />
     </div>
-  </div>
+  </router-link>
 
 
 </template>
@@ -31,13 +34,30 @@ export default {
   props: ['id'],
   computed: {
     getPokemon() {
-      let pokemon = this.$store.getters.getPokemon(this.id);
+      let pokemon;
+      if (this.$route.meta.user) {
+        pokemon = this.$store.getters.getMyPokemon(this.id);
+      } else {
+        pokemon = this.$store.getters.getPokemon(this.id);
+      }
       if (pokemon) {
         document.title = pokemon.Name;
         return pokemon;
       } else {
-        this.$router.push('/');
         return false;
+      }
+    },
+    getRoute() {
+      if (this.$route.meta.user) {
+        return `/myPokemons/${this.pokemon.Number}`
+      }
+      return `/pokemon/${this.pokemon.Number}`;
+    },
+    goBack() {
+      if (this.$route.meta.user) {
+        return '/myPokemons';
+      } else {
+        return `/`
       }
     }
   },
@@ -49,7 +69,7 @@ export default {
       } 
       return false;
     }
-  }
+  },
 }
 
 </script>
@@ -73,7 +93,7 @@ export default {
     display: flex;
     flex-flow: row nowrap;
 
-    div.pokemon {
+    a.wrapper {
       margin-left: 50px;
     }
 

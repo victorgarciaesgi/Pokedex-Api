@@ -1,12 +1,12 @@
 <template>
-  <router-link :to='`/pokemon/${pokemon.Number}`'>
+  <router-link :to='getRoute' class='wrapper'>
     <div class='pokemon' :class='[modify]'>
       <div class='container' :style="{'background-image': `url(${getTexture})`}">
         <div class='title'>
           <span class='level'>
             <span>NIVEAU {{pokemon.Level}}</span>
           </span>
-          <span class='name'>{{pokemon.Name}}</span>
+          <span class='name'>{{pokemon.Name2 || pokemon.Name}}</span>
           <span class='pv'>{{getPV}}<span>pv</span></span>
           <span class='type' :style="{backgroundPosition: getIcon}"></span>
         </div>
@@ -50,9 +50,32 @@
           </ul>
         </div>
       </div>
-      <div class='edit' @click='handleClick($event)'>
+
+      <div class='editPopup' v-show='editMode' @click.prevent>
+        <form >
+          <label for="">Nom</label>
+          <input type="text" class='input-form' v-model='editData.Name'>
+          <label for="">Level</label>
+          <input type="text" class='input-form' v-model='editData.Level'>
+
+          <div class='footer'>
+            <button @click.prevent='closeEdit()'>
+              <span>Annuler</span>
+            </button>
+            <button @click.prevent='editPokemon' type='submit' class='blue'>
+              <span>Editer</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class='edit' @click.stop.prevent='handleClick()'>
         <img v-if='modify' src="~../assets/edit.svg" alt="">
         <img v-else src="~../assets/add.svg" alt="">
+      </div>
+
+      <div class='delete' v-if='modify' @click.stop.prevent='handleDelete()'>
+        <img  src="~../assets/quit_white.svg" alt="">
       </div>
     </div>  
   </router-link>
@@ -71,18 +94,21 @@ export default {
   ],
   data() {
     return {
-      types: [
-        "Normal",
-        "Grass",
-        "Psychic",
-        "Fire",
-        "Ground",
-        "Water",
-        "Electric"
-      ]
+      types: ["Normal","Grass","Psychic","Fire","Ground","Water","Electric"],
+      editMode: false,
+      editData: {
+        Name: this.pokemon.Name2 || this.pokemon.Name,
+        Level: this.pokemon.Level
+      }
     }
   },
   computed: {
+    getRoute() {
+      if (this.modify) {
+        return `/myPokemons/${this.pokemon.Id}`
+      }
+      return `/pokemon/${this.pokemon.Number}`;
+    },
     getTexture() {
       return require(`../assets/PokemonTextures/${this.pokemon.Types[0]}.png`)
     },
@@ -103,10 +129,26 @@ export default {
   methods: {
     handleClick() {
       if (this.modify) {
-        // edit
+        this.editMode = true;
       } else {
-        this.$store.dispatch('addPokemon', this.pokemon.Number);
+        this.$store.dispatch('addPokemon', this.pokemon);
       }
+    },
+    editPokemon() {
+      console.log('lol');
+      this.$store.dispatch('editPokemon', {form: this.editData, pokemon: this.pokemon.Id});
+      this.closeEdit();
+    },
+    closeEdit() {
+      console.log('close')
+      this.editMode = false,
+      this.editData = {
+        Name: this.pokemon.Name2 || this.pokemon.Name,
+        Level: this.pokemon.Level
+      }
+    },
+    handleDelete() {
+      this.$store.dispatch('deletePokemon', this.pokemon.Id);
     },
     getType(value) {
       let type = this.types.indexOf(value);
@@ -162,6 +204,11 @@ export default {
     border-radius: 100%;
     height: 40px;
     width: 40px;
+  }
+
+  .delete {
+    @extend .edit;
+    left: 15px;
   }
 
   .container {
@@ -336,6 +383,84 @@ export default {
       }
     }
   }
+}
+
+.editPopup {
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(10,10,10,0.2);
+  
+  form {
+    display: flex;
+    flex-flow: column wrap;
+
+    .footer {
+      display: flex;
+      flex-flow: row nowrap;
+    }
+  }
+
+  label {
+    text-align: left;
+  }
+}
+
+
+button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 33px;
+  border-radius: 4px;
+  margin: 0 5px 0 5px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid transparent;
+  padding: 0px 13px 0px 13px;
+  user-select: none;
+
+  span{
+    font-size: 15px;
+    color: rgb(53, 53, 53);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .loading{
+    display: none;
+    margin-left: 6px;
+    height: 24px;
+    width: 24px;
+  }
+
+  &.submitting {
+    cursor: wait;
+    .loading{
+      display: block;
+    }
+  }
+
+  &:hover{
+    background-color: rgb(230,230,230);
+  }
+
+  &:active{
+    background-color: rgb(220,220,220);
+  }
+
+  &.blue span{
+    color: #4b87e0;
+  }
+
 }
 
 </style>

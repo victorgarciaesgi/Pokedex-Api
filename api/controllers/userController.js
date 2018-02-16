@@ -104,15 +104,10 @@ exports.update_pokemon_user = function (req, res) {
         User.findOne({name: req.params.name}, function (err, user) {
             if (!user) return res.status(404).send("L'utilisateur "+user.name+" n'existe pas !");
             if (err) return res.status(500).send("Erreur lors de la modification du pokemon de l'utilisateur");
-            user.pokemonsCatched.map(elem => {
-                if (elem.Id == req.params.Id) {
-                    elem.Name = req.body.Name;
-                    elem.Level = req.body.Level;
-
-                    return elem
-                }
-                return elem
-            });
+            let pokemon = user.pokemonsCatched.find(elem => elem.Id == req.params.Id);
+            pokemon.Name = req.body.Name;
+            pokemon.Level = req.body.Level;
+            user.markModified('pokemonsCatched');
             user.save();
             res.status(200).send(user.pokemonsCatched);
         });
@@ -127,7 +122,11 @@ exports.delete_pokemon_user = function(req, res){
             if (err) return res.status(500).send("Erreur : method read_user");
             user.pokemonsCatched = user.pokemonsCatched.filter(el => el.Id != req.params.Id);
             user.save();
+<<<<<<< HEAD
             res.status(200).send("Le pokemon "+user.pokemonsCatched+" a été supprimé");
+=======
+            res.status(200).send(user.pokemonsCatched);
+>>>>>>> b09a11af31affefe6dd3d32ea9d4aa9fb696391b
         });
     });
 };
