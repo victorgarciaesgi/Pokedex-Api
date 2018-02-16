@@ -1,5 +1,7 @@
 # Pokedex API
-An API to get info on the Pokemons written in NodeJs/Express and Vue.js with Vue-Router and Vuex
+An API to get info on the Pokemons written in NodeJs/Express and Vue.js with Vue-Router and Vuex.
+
+Collection Postamn dans le projet "collectionPostman.json"
 
 ## Screnshots
 
@@ -56,5 +58,8 @@ npm install
 ```bash
 npm run dev
 ```
+
+
+
 
 The api start on port http://localhost:8080
