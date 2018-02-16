@@ -1,7 +1,7 @@
 # Pokedex API
 An API to get info on the Pokemons written in NodeJs/Express and Vue.js with Vue-Router and Vuex.
 
-Collection Postamn dans le projet "collectionPostman.json"
+### Collection Postman dans le fichier "collectionPostman.json"
 
 ## Screnshots
 
