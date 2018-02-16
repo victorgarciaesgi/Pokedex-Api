@@ -50,6 +50,7 @@ export default {
   padding: 20px;
   height: 100%;
   width: 100%;
+  overflow-y: auto;
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;

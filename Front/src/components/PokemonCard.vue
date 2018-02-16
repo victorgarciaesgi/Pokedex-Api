@@ -54,9 +54,9 @@
       <div class='editPopup' v-show='editMode' @click.prevent>
         <form >
           <label for="">Nom</label>
-          <input type="text" class='input-form' v-model='editData.Name'>
+          <input @keydown.enter.prevent type="text" class='input-form' v-model='editData.Name'>
           <label for="">Level</label>
-          <input type="text" class='input-form' v-model='editData.Level'>
+          <input @keydown.enter.prevent type="text" class='input-form' v-model='editData.Level'>
 
           <div class='footer'>
             <button @click.prevent='closeEdit()'>
@@ -69,14 +69,16 @@
         </form>
       </div>
 
-      <div class='edit' @click.stop.prevent='handleClick()'>
-        <img v-if='modify' src="~../assets/edit.svg" alt="">
-        <img v-else src="~../assets/add.svg" alt="">
-      </div>
+      <template v-if='this.$store.state.userConnected'>
+        <div class='edit' @click.stop.prevent='handleClick()'>
+          <img v-if='modify' src="~../assets/edit.svg" alt="">
+          <img v-else src="~../assets/add.svg" alt="">
+        </div>
 
-      <div class='delete' v-if='modify' @click.stop.prevent='handleDelete()'>
-        <img  src="~../assets/quit_white.svg" alt="">
-      </div>
+        <div class='delete' v-if='modify' @click.stop.prevent='handleDelete()'>
+          <img  src="~../assets/quit_white.svg" alt="">
+        </div>
+      </template>
     </div>  
   </router-link>
 </template>
@@ -199,7 +201,7 @@ export default {
     align-items: center;
     position: absolute;
     right: 15px;
-    top: 15px;
+    top: 30px;
     background-color: rgba(20,20,20, 0.7);
     border-radius: 100%;
     height: 40px;
@@ -212,6 +214,7 @@ export default {
   }
 
   .container {
+    position: relative;
     width: 100%;
     box-shadow: inset 0 0 10px rgba(10,10,10,0.3);
     padding: 0 5px 0 5px;
@@ -220,8 +223,11 @@ export default {
     background-position: center center;
 
     .title {
+      position: relative;
       display: flex;
+      width: 100%;
       flex-flow: row nowrap;
+      flex: 1 0 auto;
       justify-content: center;
 
       .level {
@@ -246,6 +252,9 @@ export default {
         font-weight: bold;
         text-transform: capitalize;
         flex: 1 1 auto;
+        margin-right: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .pv {
