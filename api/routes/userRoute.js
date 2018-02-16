@@ -6,7 +6,6 @@ module.exports = function(app) {
         .post(user.create_user);
 
     app.route('/users/:name')
-        .put(user.verifyToken, user.update_user)
         .get(user.verifyToken, user.read_user)
         .delete(user.verifyToken, user.delete_user);
 
