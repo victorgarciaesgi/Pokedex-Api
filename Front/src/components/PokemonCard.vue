@@ -69,14 +69,16 @@
         </form>
       </div>
 
-      <div class='edit' @click.stop.prevent='handleClick()'>
-        <img v-if='modify' src="~../assets/edit.svg" alt="">
-        <img v-else src="~../assets/add.svg" alt="">
-      </div>
+      <template v-if='this.$store.state.userConnected'>
+        <div class='edit' @click.stop.prevent='handleClick()'>
+          <img v-if='modify' src="~../assets/edit.svg" alt="">
+          <img v-else src="~../assets/add.svg" alt="">
+        </div>
 
-      <div class='delete' v-if='modify' @click.stop.prevent='handleDelete()'>
-        <img  src="~../assets/quit_white.svg" alt="">
-      </div>
+        <div class='delete' v-if='modify' @click.stop.prevent='handleDelete()'>
+          <img  src="~../assets/quit_white.svg" alt="">
+        </div>
+      </template>
     </div>  
   </router-link>
 </template>

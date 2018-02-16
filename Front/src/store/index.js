@@ -80,6 +80,7 @@ export const store = new Vuex.Store({
       state.userInfos = {};
       state.userPokemons = [];
       router.push('/');
+
       defaultHeader();
     },
     addAlert(state, alert) {
@@ -132,7 +133,7 @@ export const store = new Vuex.Store({
       return true;
     },
     async deletePokemon(context, pokemon) {
-      let {data} = await HTTP.delete(`http://localhost:3000/users/victor/pokemons/${pokemon}`);
+      let {data} = await HTTP.delete(`http://localhost:3000/users/${context.state.userInfos.name}/pokemons/${pokemon}`);
       if (data) {
         context.commit('updateMyPokemons', data);
         context.dispatch('addNotification', {type: 'success', message:'Pokemon supprimé'});
@@ -147,7 +148,7 @@ export const store = new Vuex.Store({
       if (data) {
         let {user} = await jwtDecode(data);
         jwt.set(data);
-        context.commit('connectUser', {user, token: data.token});
+        context.commit('connectUser', {user, token: data});
         router.push('/mypokemons')
         return true;
       }
