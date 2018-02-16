@@ -15,22 +15,21 @@ exports.index = function(req, res) {
 
 /** login **/
 exports.login = function(req, res){
-
     let user = req.body;
 
     console.log(user);
 
-    User.findOne({name: user.name}, function (err, user) {
-        if (err) return res.status(500).send("Erreur lors de la connexion au pokedex !");
+    User.findOne({name: user.name, password: user.password}, function (err, user) {
         if (!user) {
             return res.status(404).send("Utilisateur non trouvé !")
         }else{
-            jwt.sign({user}, config.secret, { expiresIn: '30s' }, (err, token) => {
+            jwt.sign({user}, config.secret, { expiresIn: '3600s' }, (err, token) => {
                 res.send(
                     token
                 );
             });
         }
+        if (err) return res.status(500).send("Erreur lors de la connexion au pokedex !");
     });
 };
 

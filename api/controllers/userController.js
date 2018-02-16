@@ -91,10 +91,14 @@ exports.create_pokemon_user = function(req, res){
 exports.read_pokemon_user = function(req, res){
     jwt.verify(req.token, config.secret, (err, user) => {
         User.findOne({name: req.params.name}, function (err, user) {
-            if (!user) return res.status(404).send("L'utilisateur "+user.name+" n'existe pas !");
+            if (!user) return res.status(404).send("L'utilisateur " + user.name + " n'existe pas !");
             if (err) return res.status(500).send("Erreur lors de l'affichage du pokemon");
             let pokemonUser = user.pokemonsCatched.find(el => el.Id == req.params.Id);
-            res.status(200).send(pokemonUser);
+            if(!!pokemonUser) {
+                res.status(200).send(pokemonUser);
+            }else{
+                return res.status(500).send("Ce pokemon n'existe pas dans la liste");
+            }
         });
     });
 };
@@ -122,11 +126,7 @@ exports.delete_pokemon_user = function(req, res){
             if (err) return res.status(500).send("Erreur : method read_user");
             user.pokemonsCatched = user.pokemonsCatched.filter(el => el.Id != req.params.Id);
             user.save();
-<<<<<<< HEAD
-            res.status(200).send("Le pokemon "+user.pokemonsCatched+" a été supprimé");
-=======
-            res.status(200).send(user.pokemonsCatched);
->>>>>>> b09a11af31affefe6dd3d32ea9d4aa9fb696391b
+            res.status(200).send("Le pokemon a été supprimé");
         });
     });
 };
