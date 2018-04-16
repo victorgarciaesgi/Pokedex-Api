@@ -7,8 +7,8 @@ exports.list_all_pokemons = function(req, res) {
     let query = Pokemon.find({}).select(attributesSelect).sort([['Number', 'ascending']]);
     query.exec(function (err, pokemons) {
         if (err) return res.status(500).send(err);
-        res.json(pokemons)
-    })
+        res.json(pokemons);
+    });
 };
 
 /** create pokemon **/
@@ -26,9 +26,9 @@ exports.read_pokemon = function(req, res) {
     let query = Pokemon.find({Number: req.params.Number}).select(attributesSelect);
     query.exec(function (err, pokemons) {
         if (err)
-            res.send(err)
-        res.json(pokemons)
-    })
+            res.send(err);
+        res.json(pokemons);
+    });
 };
 
 /** update pokemon **/

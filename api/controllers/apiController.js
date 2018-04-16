@@ -21,7 +21,7 @@ exports.login = function(req, res){
 
     User.findOne({name: user.name, password: user.password}, function (err, user) {
         if (!user) {
-            return res.status(404).send("Utilisateur non trouvé !")
+            return res.status(404).send("Utilisateur non trouvé !");
         }else{
             jwt.sign({user}, config.secret, { expiresIn: '3600s' }, (err, token) => {
                 res.send(

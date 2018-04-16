@@ -133,7 +133,7 @@ exports.delete_pokemon_user = function(req, res){
 
 exports.verifyToken = function(req, res, next) {
     // Get auth header value
-    const bearerHeader = req.headers['authorization'];
+    const bearerHeader = req.headers.authorization;
     // Check if bearer is undefined
     if(typeof bearerHeader !== 'undefined') {
         // Split at the space
@@ -148,6 +148,6 @@ exports.verifyToken = function(req, res, next) {
         // Forbidden
         res.status(403).send("Accès refusé. Vous devez vous logguer afin d'obtenir un JWT.");
     }
-}
+};
 
 
