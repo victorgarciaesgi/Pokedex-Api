@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon --inspect index.js",
-    "test": "jshint index.js"
+    "test": "jshint ./api/"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
