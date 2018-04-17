@@ -2,7 +2,7 @@
 An API to get info on the Pokemons written in NodeJs/Express and Vue.js with Vue-Router and Vuex.
 
 ![](https://travis-ci.org/victorgarciaesgi/Pokedex-Api.svg?branch=master)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d7913f326e984c1abefffdd03ea5e784)](https://www.codacy.com/app/victorgarciaesgi/Pokedex-Api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=victorgarciaesgi/Pokedex-Api&amp;utm_campaign=Badge_Grade)
 ### Collection Postman dans le fichier "collectionPostman.json"
 
 ## Screnshots
